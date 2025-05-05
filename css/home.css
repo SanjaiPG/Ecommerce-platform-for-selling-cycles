@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .main-nav {
+    background: linear-gradient(90deg, #1e1f26, #2b2d42);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-right: 25px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .logo svg {
+    margin-right: 8px;
+    color: #ff9900;
+  }
+  
+  .nav-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nav-left ul li {
+    margin-right: 25px;
+  }
+  
+  .nav-left ul li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-left ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-left ul li a:hover {
+    color: #ffcc00;
+  }
+  
+  .nav-left ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ffcc00;
+    left: 0;
+    bottom: -6px;
+    transition: width 0.3s;
+  }
+  
+  .nav-left ul li a:hover::after {
+    width: 100%;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-box {
+    display: flex;
+    margin-right: 20px;
+    background-color: #2d3548;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  
+  .search-box input[type="text"] {
+    padding: 10px;
+    border: none;
+    background-color: #3b4359;
+    color: #fff;
+    outline: none;
+    width: 160px;
+  }
+  
+  .search-box button[type="submit"] {
+    background-color: #4a5168;
+    color: #fff;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .search-box button[type="submit"]:hover {
+    background-color: #5a627b;
+  }
+  
+  .nav-right a {
+    color: #ccc;
+    margin-left: 18px;
+    transition: color 0.3s;
+  }
+  
+  .nav-right a:hover {
+    color: #ffcc00;
+  }
+  
+  .nav-right svg {
+    display: block;
+  }
+  
