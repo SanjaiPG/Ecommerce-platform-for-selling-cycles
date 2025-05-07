@@ -14,9 +14,6 @@
       <a href="#" class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H9.5L3 9v6l6.5 7h5L21 15V9z"></path><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
       </a> 
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>      
       <ul class="main-menu">
         <li><a href="#">Home</a></li>
         <li class="has-megamenu">
@@ -150,49 +147,6 @@
       </div>
     </div>
   </footer>
-  <script>
-    // Toggle main menu
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainMenu = document.querySelector('.main-menu');
-  
-    menuToggle.addEventListener('click', () => {
-      mainMenu.classList.toggle('active');
-    });
-  
-    // Handle mega menu toggle on mobile
-    const megaMenuParents = document.querySelectorAll('.has-megamenu');
-  
-    megaMenuParents.forEach(parent => {
-      const anchor = parent.querySelector('a');
-  
-      anchor.addEventListener('click', function (e) {
-        if (window.innerWidth <= 767) {
-          e.preventDefault(); // Prevent navigation on mobile
-          // Close other active mega menus
-          megaMenuParents.forEach(el => el.classList.remove('active'));
-          parent.classList.toggle('active');
-        }
-      });
-    });
-  
-    // Handle expandable columns in mega menu (mobile)
-    const megaMenuHeaders = document.querySelectorAll('.mega-menu-column h4');
-  
-    megaMenuHeaders.forEach(header => {
-      header.addEventListener('click', function () {
-        const column = this.parentElement;
-        column.classList.toggle('active');
-      });
-    });
-  
-    // Optional: close mega menu if window resized above mobile breakpoint
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 767) {
-        megaMenuParents.forEach(el => el.classList.remove('active'));
-        mainMenu.classList.remove('active');
-      }
-    });
-  </script>  
-  
+
 </body>
 </html>

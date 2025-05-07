@@ -224,10 +224,6 @@ body {
   min-height: 100vh;
 }
 
-.menu-toggle {
-  display: none;
-}
-
 .main-footer {
   margin-top: auto;
   background-color: #ffffff;
@@ -312,81 +308,4 @@ body {
 
 .main-footer .social-icons li a i {
   font-size: 40px;
-}
-
-@media (max-width: 1199px) {
-  .main-nav {
-    padding: 0 50px;
-  }
-  
-  .mega-menu {
-    min-width: 800px;
-  }
-  
-  .main-footer {
-    padding: 40px 50px;
-  }
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  /* Fix mega menu positioning and width */
-  .mega-menu {
-    min-width: 100%;
-    width: 100%;
-    left: 0;
-    right: 0;
-    position: absolute;
-  }
-  
-  /* Improve mega menu layout */
-  .mega-menu-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 30px;
-  }
-  
-  /* Ensure menu columns have appropriate spacing */
-  .mega-menu-column {
-    flex: 1;
-    padding: 0 15px;
-  }
-  
-  /* Make sure has-megamenu element is positioned properly */
-  .has-megamenu {
-    position: static;
-  }
-  
-  /* Since position is static, we need to adjust for parent */
-  .main-menu .has-megamenu .mega-menu {
-    left: 0;
-    right: 0;
-    margin: 0;
-  }
-}
-
-/* Extra Small Devices (Phones, less than 576px) */
-@media (max-width: 575px) {
-  .main-nav {
-    padding: 10px 15px;
-  }
-  
-  .logo {
-    font-size: 18px;
-  }
-  
-  .nav-right a {
-    margin-left: 12px;
-  }
-  
-  .search-box {
-    max-width: 150px;
-  }
-  
-  .main-footer {
-    padding: 25px 15px;
-  }
-  
-  .main-footer .social-icons li a i {
-    font-size: 30px;
-  }
 }
