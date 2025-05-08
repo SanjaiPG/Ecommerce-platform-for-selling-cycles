@@ -1,197 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CycleLane Auth</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f3f4f6;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-    }
-    h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
-      color: #111827;
-    }
-    p {
-      text-align: center;
-      color: #6b7280;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .checkbox-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    .checkbox-row label {
-      display: flex;
-      align-items: center;
-    }
-    .checkbox-row input[type="checkbox"] {
-      margin-right: 0.5rem;
-    }
-    a {
-      color: #f97316;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .btn {
-      background: linear-gradient(to right, #1f2937, #111827);
-      color: white;
-      width: 100%;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .btn:hover {
-      opacity: 0.9;
-    }
-    .socials {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .socials button {
-      flex: 1;
-      padding: 0.6rem;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      background-color: white;
-      cursor: pointer;
-    }
-    .toggle {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-    .divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 1.5rem 0;
-      color: #9ca3af;
-      font-size: 0.9rem;
-    }
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: #e5e7eb;
-    }
-    .divider::before {
-      margin-right: 0.75rem;
-    }
-    .divider::after {
-      margin-left: 0.75rem;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Modern Login Page | AsmrProg</title>
 </head>
+
 <body>
-  <div class="container">
-    
-    <!-- LOGIN FORM -->
-    <div id="login">
-      <h2>Welcome back</h2>
-      <p>Sign in to your CycleLane account</p>
-      <input type="email" placeholder="Email address">
-      <input type="password" placeholder="Password">
 
-      <div class="checkbox-row">
-        <label><input type="checkbox"> Remember me</label>
-        <a href="#">Forgot your password?</a>
-      </div>
-
-      <button class="btn">Sign in</button>
-
-      <div class="divider">Or continue with</div>
-
-      <div class="socials">
-        <button><img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" width="20"></button>
-        <button><img src="https://www.svgrepo.com/show/157810/facebook.svg" alt="Facebook" width="20"></button>
-      </div>
-
-      <div class="toggle">
-        Don't have an account? <a href="#" onclick="toggleForm()">Create an account</a>
-      </div>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registeration</span>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#">Forget Your Password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- SIGNUP FORM -->
-    <div id="signup" class="hidden">
-      <h2>Create an account</h2>
-      <p>Join CycleLane for the best cycling experience</p>
-      <input type="text" placeholder="Full name">
-      <input type="email" placeholder="Email address">
-      <input type="password" placeholder="Password">
-      <input type="password" placeholder="Confirm password">
-
-      <div class="checkbox-row">
-        <label>
-          <input type="checkbox">
-          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-        </label>
-      </div>
-
-      <button class="btn">Sign up</button>
-
-      <div class="divider">Or sign up with</div>
-
-      <div class="socials">
-        <button><img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" width="20"></button>
-        <button><img src="https://www.svgrepo.com/show/157810/facebook.svg" alt="Facebook" width="20"></button>
-      </div>
-
-      <div class="toggle">
-        Already have an account? <a href="#" onclick="toggleForm()">Sign in</a>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    function toggleForm() {
-      document.getElementById("login").classList.toggle("hidden");
-      document.getElementById("signup").classList.toggle("hidden");
-    }
-  </script>
+    <script src="/js/login.js"></script>
 </body>
+
 </html>
