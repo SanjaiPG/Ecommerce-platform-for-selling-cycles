@@ -25,17 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return password.length >= 6;
     }
 
-    function showError(input, message) {
-        const errorElement = document.createElement("div");
-        errorElement.classList.add("error-message");
-        errorElement.style.color = "red";
-        errorElement.style.fontSize = "12px";
-        errorElement.textContent = message;
-        input.parentNode.appendChild(errorElement);
+    function showError(input) {
+        input.classList.add("error"); // Add error class to input
     }
 
     function clearErrors() {
-        document.querySelectorAll(".error-message").forEach(error => error.remove());
+        document.querySelectorAll(".error").forEach(input => input.classList.remove("error")); // Remove error class from inputs
     }
 
     signUpForm.addEventListener("submit", function (event) {
@@ -49,15 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let isValid = true;
 
         if (name.value.trim() === "") {
-            showError(name, "Name is required.");
+            showError(name); // Highlight name input
             isValid = false;
         }
         if (!validateEmail(email.value)) {
-            showError(email, "Please enter a valid email address.");
+            showError(email); // Highlight email input
             isValid = false;
         }
         if (!validatePassword(password.value)) {
-            showError(password, "Password must be at least 6 characters.");
+            showError(password); // Highlight password input
             isValid = false;
         }
 
@@ -76,11 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let isValid = true;
 
         if (!validateEmail(email.value)) {
-            showError(email, "Please enter a valid email address.");
+            showError(email); // Highlight email input
             isValid = false;
         }
         if (!validatePassword(password.value)) {
-            showError(password, "Password must be at least 6 characters.");
+            showError(password); // Highlight password input
             isValid = false;
         }
 
