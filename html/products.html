@@ -8,12 +8,11 @@
     <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
 </head>
 <body>
-   <!-- Nav bar -->
    <nav class="main-nav">
     <div class="nav-left">
       <a href="#" class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H9.5L3 9v6l6.5 7h5L21 15V9z"></path><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-      </a> 
+      </a>
       <ul class="main-menu">
         <li><a href="#">Home</a></li>
         <li class="has-megamenu">
@@ -94,14 +93,103 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
       </div>
-      <a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      <a href="login.html">
+        <i class="fa-regular fa-user"></i>
       </a>
       <a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <i class="fa-solid fa-cart-shopping"></i>
       </a>
     </div>
   </nav>
+
+   <header class="product-header">
+    <div class="product-count"></div>
+    <div class="product-controls">
+      <button class="filter-button">
+        FILTER
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+      </button>
+      <button class="sort-button">
+        SORT BY
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="product-grid">
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Mountain Bike - Trail Blazer">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Trail Blazer Pro</h3>
+        <h3 class="product-price">$1,299.99</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Road Bike - Speed Demon">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Speed Demon Ultra</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Urban Commuter">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Urban Commuter Deluxe</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Kids Bike - Little Explorer">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Little Explorer</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Mountain Bike Helmet">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Pro MTB Helmet</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Cycling Gloves">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Grip Master Gloves</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Bike Lock">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Fortress U-Lock</h3>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="/api/placeholder/300/300" alt="Water Bottle">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Hydro Flow Bottle</h3>
+      </div>
+    </div>
+  </main>
 
   <footer class="main-footer">
     <div class="footer-container">
