@@ -46,3 +46,11 @@ python manage.py startapp skyraptor
     ├── tests.py
     └── views.py
 ```
+
+# To run the local host server
+
+python manage.py runserver
+
+Also, make sure the virtual env is running
+
+# And type localhost:8000 in your browser
