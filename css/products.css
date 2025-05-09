@@ -360,6 +360,7 @@ body {
   transition: box-shadow 0.3s;
   display: flex;
   flex-direction: column;
+  border: 1px solid #000;
 }
 
 .product-card:hover {
