@@ -2,6 +2,7 @@
 This is the web page for my summer internship project — an e-commerce platform for selling cycles.
 
 🐧 Environment
+
 Operating System: Linux (Arch)
 
 Framework: Django (Python)
