@@ -54,3 +54,12 @@ python manage.py runserver
 Also, make sure the virtual env is running
 
 # And type localhost:8000 in your browser
+
+# To use admin 
+
+python manage.py migrate
+
+localhost:8000/admin in your local web browser
+
+# To create super user - admin
+python manage.py createsuperuser
