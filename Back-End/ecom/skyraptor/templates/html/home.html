@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Skyraptor </title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
 </head>
@@ -14,79 +14,66 @@
    <nav class="main-nav">
     <div class="nav-left">
       <a href="#" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H9.5L3 9v6l6.5 7h5L21 15V9z"></path><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
       </a> 
       <ul class="main-menu">
-        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
         <li class="has-megamenu">
-          <a href="#">Cycles</a>
+          <a href="{% url 'products' %}">Products</a>
           <div class="mega-menu">
             <div class="mega-menu-container">
               <div class="mega-menu-column">
-                <h4>Mountain Bikes</h4>
+                <h4>Cycles</h4>
                 <ul>
-                  <li><a href="#">Trail</a></li>
-                  <li><a href="#">Cross Country</a></li>
-                  <li><a href="#">Enduro</a></li>
-                  <li><a href="#">Downhill</a></li>
-                </ul>
-              </div>
-              <div class="mega-menu-column">
-                <h4>Road Bikes</h4>
-                <ul>
-                  <li><a href="#">Race</a></li>
-                  <li><a href="#">Endurance</a></li>
-                  <li><a href="#">Gravel</a></li>
-                  <li><a href="#">Triathlon</a></li>
-                </ul>
-              </div>
-              <div class="mega-menu-column">
-                <h4>Other Types</h4>
-                <ul>
-                  <li><a href="#">Electric</a></li>
-                  <li><a href="#">Hybrid</a></li>
-                  <li><a href="#">City</a></li>
-                  <li><a href="#">Kids</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="has-megamenu">
-          <a href="#">Accessories</a>
-          <div class="mega-menu">
-            <div class="mega-menu-container">
-              <div class="mega-menu-column">
-                <h4>Riding Gear</h4>
-                <ul>
-                  <li><a href="#">Helmets</a></li>
-                  <li><a href="#">Gloves</a></li>
-                  <li><a href="#">Shoes</a></li>
-                  <li><a href="#">Jerseys</a></li>
-                </ul>
-              </div>
-              <div class="mega-menu-column">
-                <h4>Bike Parts</h4>
-                <ul>
-                  <li><a href="#">Wheels</a></li>
-                  <li><a href="#">Tires</a></li>
-                  <li><a href="#">Saddles</a></li>
-                  <li><a href="#">Pedals</a></li>
+                  <li><a href="#">Kids Cycle</a></li>
+                  <li><a href="#">Geared Cycle</a></li>
+                  <li><a href="#">Non Geared Cycle</a></li>
+                  <li><a href="#">Electric Cycle</a></li>
                 </ul>
               </div>
               <div class="mega-menu-column">
                 <h4>Accessories</h4>
                 <ul>
+                  <li><a href="#">Locks & Safety</a></li>
+                  <li><a href="#">Saddle Covers</a></li>
+                  <li><a href="#">Mud Guards</a></li>
                   <li><a href="#">Lights</a></li>
-                  <li><a href="#">Locks</a></li>
-                  <li><a href="#">Bottles</a></li>
-                  <li><a href="#">Bags</a></li>
+                  <li><a href="#">Bags & Bottles</a></li>
                 </ul>
               </div>
             </div>
           </div>
         </li>
-        <li><a href="#">Services</a></li>
+        <li class="has-megamenu">
+          <a href="#">Services</a>
+          <div class="mega-menu">
+            <div class="mega-menu-container">
+              <div class="mega-menu-column">
+                <h4>Skyraptor Technology</h4>
+                <ul>
+                  <li><a href="#">New Drivetrain Technology</a></li>
+                  <li><a href="#">Our Innovation</a></li>
+                  <li><a href="#">Traditional Cycle vs Skyraptor Cycle</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-column">
+                <h4>Contact us</h4>
+                <ul>
+                  <li><a href="#">Email us</a></li>
+                  <li><a href="#">Call us</a></li>
+                  <li><a href="#">Chat with us</a></li>
+                  <li><a href="#">Visit us</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-column">
+                <h4>Franchise Enquiry</h4>
+                <ul>
+                  <li><a href="#">Enquiry Form</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="nav-right">
@@ -96,7 +83,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
       </div>
-      <a href="login.html">
+      <a href="{% url 'login' %}">
         <i class="fa-regular fa-user"></i>
       </a>
       <a href="#">
@@ -108,28 +95,28 @@
   <footer class="main-footer">
     <div class="footer-container">
       <div class="footer-links">
-        <h3>SUPPORT</h3>
+        <h3>ABOUT US</h3>
         <ul>
-          <li><a href="#">Contact us</a></li>
-          <li><a href="#">Payments</a></li>
-          <li><a href="#">My Account</a></li>
+          <li><a href="#">Who we are</a></li>
+          <li><a href="#">Vision & Mission</a></li>
+          <li><a href="#">Why choose us</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h3>OUR PRODUCTS</h3>
         <ul>
-          <li><a href="#">Mountain Bikes</a></li>
-          <li><a href="#">Road Bikes</a></li>
-          <li><a href="#">city Bikes</a></li>
-          <li><a href="#">Hybrid Bikes</a></li>
-          <li><a href="#">Kids</a></li>
-          <li><a href="#">Electric</a></li>
+          <li><a href="#">Kids cycle</a></li>
+          <li><a href="#">Geared Cycle</a></li>
+          <li><a href="#">Non Geared Cycle</a></li>
+          <li><a href="#">Accessories</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3>ABOUT</h3>
+        <h3>SERVICES</h3>
         <ul>
           <li><a href="#">Product Catalog</a></li>
+          <li><a href="#">Door Step Services</a></li>
+          <li><a href="#">Parts replacement</a></li>
           <li><a href="#">Locate Us</a></li>
         </ul>
       </div>

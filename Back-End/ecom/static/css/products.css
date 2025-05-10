@@ -42,11 +42,6 @@ body {
   padding: 20px 0;
 }
 
-.logo svg {
-  margin-right: 8px;
-  color: #ff9900;
-}
-
 /* Main menu styling */
 .main-menu {
   list-style: none;

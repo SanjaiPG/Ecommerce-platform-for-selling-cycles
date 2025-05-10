@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Skyraptor | Products</title>
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
     <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
 </head>
@@ -13,12 +13,12 @@
    <nav class="main-nav">
     <div class="nav-left">
       <a href="#" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H9.5L3 9v6l6.5 7h5L21 15V9z"></path><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-      </a>
+        <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
+      </a> 
       <ul class="main-menu">
-        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
         <li class="has-megamenu">
-          <a href="#">Cycles</a>
+          <a href="{% url 'products' %}">Cycles</a>
           <div class="mega-menu">
             <div class="mega-menu-container">
               <div class="mega-menu-column">
@@ -95,7 +95,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
       </div>
-      <a href="login.html">
+      <a href="{% url 'login' %}">
         <i class="fa-regular fa-user"></i>
       </a>
       <a href="#">
