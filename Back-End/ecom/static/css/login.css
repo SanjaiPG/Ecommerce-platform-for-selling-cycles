@@ -84,7 +84,7 @@ body{
 .container input{
     background-color: #f4f4f4;
     border: 1px solid #ddd;
-    margin: 10px 0;
+    margin: 0px 0;
     padding: 12px 15px;
     font-size: 14px;
     border-radius: 5px;
@@ -235,4 +235,21 @@ body{
 
 .container input.error {
     border-color: red;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Error input styling */
+.error {
+    border: 1px solid red;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }

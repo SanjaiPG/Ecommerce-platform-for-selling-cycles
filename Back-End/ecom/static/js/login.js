@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const registerBtn = document.getElementById("register");
     const loginBtn = document.getElementById("login");
 
-    // Toggle between sign-up and sign-in forms
     registerBtn.addEventListener("click", () => {
         clearErrors();
         container.classList.add("active");
@@ -17,85 +16,86 @@ document.addEventListener("DOMContentLoaded", function () {
     const signUpForm = document.querySelector(".sign-up form");
     const signInForm = document.querySelector(".sign-in form");
 
-    // Email validation regex
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
     }
 
-    // Password length validation (at least 6 characters)
     function validatePassword(password) {
-        return password.length >= 6;
+        const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/; 
+        return re.test(password);
     }
 
-    // Function to add error class to invalid inputs
-    function showError(input) {
-        input.classList.add("error"); // Add error class to input
+    function showError(input, message) {
+        input.classList.add("error");
+        const errorElement = document.createElement("div");
+        errorElement.classList.add("error-message");
+        errorElement.textContent = message;
+        input.parentNode.appendChild(errorElement);
     }
 
-    // Function to clear previous error classes
     function clearErrors() {
-        document.querySelectorAll(".error").forEach(input => input.classList.remove("error")); // Remove error class from inputs
+        document.querySelectorAll(".error").forEach(input => input.classList.remove("error"));
+        document.querySelectorAll(".error-message").forEach(msg => msg.remove());
     }
 
-    // Sign-Up form validation
     signUpForm.addEventListener("submit", function (event) {
         event.preventDefault();
         clearErrors();
 
-        const name = signUpForm.querySelector("input[type='text']");
-        const email = signUpForm.querySelector("input[type='email']");
-        const password = signUpForm.querySelector("input[type='password']");
+        const name = signUpForm.querySelector("input[name='username']");
+        const email = signUpForm.querySelector("input[name='email']");
+        const password = signUpForm.querySelector("input[name='password1']");
+        const confirmPassword = signUpForm.querySelector("input[name='password2']");
 
         let isValid = true;
 
-        // Validate name (not empty)
         if (name.value.trim() === "") {
-            showError(name); // Highlight name input
+            showError(name);
             isValid = false;
         }
 
-        // Validate email format
         if (!validateEmail(email.value)) {
-            showError(email); // Highlight email input
+            showError(email);
             isValid = false;
         }
 
-        // Validate password length
         if (!validatePassword(password.value)) {
-            showError(password); // Highlight password input
+            showError(password, "Password must be at least 6 characters long, contain a number, a lowercase, and an uppercase letter.");
+            isValid = false;
+        }
+
+        if (password.value !== confirmPassword.value) {
+            showError(confirmPassword, "Passwords do not match.");
             isValid = false;
         }
 
         if (isValid) {
-            signUpForm.submit(); // Submit form if valid
+            signUpForm.submit();
         }
     });
 
-    // Sign-In form validation
     signInForm.addEventListener("submit", function (event) {
         event.preventDefault();
         clearErrors();
 
-        const username = signInForm.querySelector("input[type='text']");
-        const password = signInForm.querySelector("input[type='password']");
+        const username = signInForm.querySelector("input[name='username']");
+        const password = signInForm.querySelector("input[name='password']");
 
         let isValid = true;
 
-        // Validate username (not empty)
         if (username.value.trim() === "") {
-            showError(username); // Highlight username input
+            showError(username);
             isValid = false;
         }
-
-        // Validate password length
-        if (!validatePassword(password.value)) {
-            showError(password); // Highlight password input
+        
+        if (password.value.trim() === "") {
+            showError(password);
             isValid = false;
         }
 
         if (isValid) {
-            signInForm.submit(); // Submit form if valid
+            signInForm.submit();
         }
     });
 });

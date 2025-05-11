@@ -12,49 +12,52 @@
 </head>
 
 <body>
-    
+
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
                 <h1>Create Account</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                <br>
+
+                <div class="form-group">
+                    <input type="text" name="username" id="id_username" class="form-control" placeholder="Username">
                 </div>
-                <span>or use your email for registeration</span>
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Sign Up</button>
+
+                <div class="form-group">
+                    <input type="email" name="email" id="id_email" class="form-control" placeholder="Email Address">
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password1" id="id_password1" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password2" id="id_password2" class="form-control" placeholder="Confirm Password">
+                </div>
+
+                <button type="submit">Sign Up</button>
             </form>
         </div>
-        <div class="form-container sign-in">
 
+        <div class="form-container sign-in">
             <form method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
-
                 <h1>Sign In</h1>
                 <br>
 
-                <!-- <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                <div class="form-group">
+                    <input type="text" name="username" id="id_username" class="form-control" placeholder="Username">
                 </div>
-                <span>or use your email password</span> -->
-
-                <input type="text" placeholder="User Name" name="username">
-                <input type="password" placeholder="Password" name="password">
-
-                <!-- <a href="#">Forget Your Password?</a> -->
+                
+                <div class="form-group">
+                    <input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
+                </div>
 
                 <button type="submit">Sign In</button>
             </form>
-
         </div>
+
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
