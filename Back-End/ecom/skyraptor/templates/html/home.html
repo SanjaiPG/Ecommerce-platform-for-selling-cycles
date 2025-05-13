@@ -27,10 +27,10 @@
               <div class="mega-menu-column">
                 <h4>Cycles</h4>
                 <ul>
-                  <li><a href="#">Kids Cycle</a></li>
-                  <li><a href="#">Geared Cycle</a></li>
-                  <li><a href="#">Non Geared Cycle</a></li>
-                  <li><a href="#">Electric Cycle</a></li>
+                  <li><a href="{% url 'category' 'Kids' %}">Kids Cycle</a></li>
+                  <li><a href="{% url 'category' 'Gear' %}">Geared Cycle</a></li>
+                  <li><a href="{% url 'category' 'Non-Gear' %}">Non Geared Cycle</a></li>
+                  <li><a href="{% url 'category' 'Electric' %}">Electric Cycle</a></li>
                 </ul>
               </div>
               <div class="mega-menu-column">
@@ -125,10 +125,11 @@
       <div class="footer-links">
         <h3>OUR PRODUCTS</h3>
         <ul>
-          <li><a href="#">Kids cycle</a></li>
-          <li><a href="#">Geared Cycle</a></li>
-          <li><a href="#">Non Geared Cycle</a></li>
-          <li><a href="#">Accessories</a></li>
+          <li><a href="{% url 'category' 'Kids' %}">Kids cycle</a></li>
+          <li><a href="{% url 'category' 'Gear' %}">Geared Cycle</a></li>
+          <li><a href="{% url 'category' 'Non-Gear' %}">Non Geared Cycle</a></li>
+          <li><a href="{% url 'category' 'Electric' %}">Electric Cycle</a></li>
+          <li><a href="{% url 'category' 'Accessories' %}">Accessories</a></li>
         </ul>
       </div>
       <div class="footer-links">
