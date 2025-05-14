@@ -103,6 +103,7 @@
     </div>
   </nav>
 
+  <br><br>
   <main class="container">
     <div class="product-container">
       <div class="product-images">
@@ -112,7 +113,7 @@
         <div class="product-category">{{ category.name }}</div>
         <h1 class="product-title">{{ product_view.name }}</h1>
   
-        <div class="product-price-in">{{ product_view.price }}</div>
+        <div class="product-price-in">₹{{ product_view.price }}</div>
         <p class="product-description">{{ product_view.description }}</p>
 
         <div class="quantity-selector">
@@ -128,70 +129,18 @@
     </div>
 
     <div class="product-scroll-container">
+      {% for pro in related_products %}
       <div class="product-card">
         <div class="product-image">
-          <img src="" alt="Mountain Bike - Trail Blazer">
+          <img src="{{ pro.image.url }}" alt="Product Image">
         </div>
         <div class="product-info">
-          <h3 class="product-name">Trail Blazer Pro</h3>
-          <h3 class="product-price">$1,299.99</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="/api/placeholder/300/300" alt="Road Bike - Speed Demon">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Speed Demon Ultra</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="/api/placeholder/300/300" alt="Urban Commuter">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Urban Commuter Deluxe</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="/api/placeholder/300/300" alt="Kids Bike - Little Explorer">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Little Explorer</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="/api/placeholder/300/300" alt="Mountain Bike Helmet">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Pro MTB Helmet</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="/api/placeholder/300/300" alt="Cycling Gloves">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Grip Master Gloves</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="/api/placeholder/300/300" alt="Bike Lock">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Fortress U-Lock</h3>
+          <h3 class="product-name">{{ pro.name }}</h3>
+          <h3 class="product-price">₹{{ pro.price }}</h3>
         </div>
       </div>
     </div>
+    {% endfor %}
   </main>
 
   <footer class="main-footer">
@@ -241,17 +190,23 @@
   </footer>
 
   <script>
-    function increaseQuantity() {
-        const input = document.getElementById('quantity');
-        input.value = parseInt(input.value) + 1;
-    }
     
-    function decreaseQuantity() {
-        const input = document.getElementById('quantity');
-        if (parseInt(input.value) > 1) {
-            input.value = parseInt(input.value) - 1;
-        }
-    }
+   const quantityInput = document.querySelector('.quantity-input');
+   const minusBtn = document.querySelectorAll('.quantity-btn')[0];
+   const plusBtn = document.querySelectorAll('.quantity-btn')[1];
+
+   minusBtn.addEventListener('click', function() {
+    let value = parseInt(quantityInput.value);
+      if (value > 1) {
+        quantityInput.value = value - 1;
+      }
+    });
+        
+    plusBtn.addEventListener('click', function() {
+      let value = parseInt(quantityInput.value);
+      quantityInput.value = value + 1;
+    });
+
   </script>
 
 </body>
