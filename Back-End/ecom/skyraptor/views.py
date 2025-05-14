@@ -57,10 +57,11 @@ def register_user(request):
     return render(request, 'html/login.html', {'form': form})
 
 def product_view(request, pk):
-
     product_view = Product.objects.get(id=pk)
     category = product_view.Category
-    related_products = Product.objects.filter(Category=category).exclude(id=pk)
+
+    related_products = Product.objects.filter(Category=category).exclude(id=pk)[:10]
+    
     return render(request, 'html/product_view.html', {'product_view': product_view, 'category': category, 'related_products': related_products})
 
 def category(request, foo):
