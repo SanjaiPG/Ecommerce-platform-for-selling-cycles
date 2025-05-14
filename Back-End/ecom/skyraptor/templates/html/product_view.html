@@ -103,49 +103,96 @@
     </div>
   </nav>
 
-  <div class="product-container">
-    <!-- Product Image -->
-    <div class="product-image">
-      <img src="{{ product_view.image.url }}" alt="Product Image">
-    </div>
-    
-    <!-- Product Details -->
-    <div class="product-details">
-        <div class="product-category">{{ product_view.category }}</div>
+  <main class="container">
+    <div class="product-container">
+      <div class="product-images">
+        <center><img src="{{ product_view.image.url }}" alt="Premium Wireless Headphones" class="main-image"></center>
+      </div>
+      <div class="product-details">
+        <div class="product-category">{{ category.name }}</div>
         <h1 class="product-title">{{ product_view.name }}</h1>
+  
+        <div class="product-price-in">{{ product_view.price }}</div>
         <p class="product-description">{{ product_view.description }}</p>
-        
-        <div class="price-container">
-            <span class="price">{{ product_view.price }}</span>
-        </div>
-        
+
         <div class="quantity-selector">
-            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
-            <input type="number" class="quantity-input" value="1" min="1" id="quantity">
-            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+          <button class="quantity-btn">-</button>
+          <input type="number" value="1" min="1" class="quantity-input">
+          <button class="quantity-btn">+</button>
         </div>
-        
-        <button class="add-to-cart-btn">
-            <i class="fa-solid fa-cart-shopping"></i>
-            Add to cart
-        </button>
-        
-        <div class="product-meta">
-            <div class="feature-item">
-                <span class="feature-icon"><i class="fa-solid fa-truck"></i></span>
-                <span>Free Shipping within 3-5 business days</span>
-            </div>
-            <div class="feature-item">
-                <span class="feature-icon"><i class="fa-solid fa-shield"></i></span>
-                <span>2-year warranty on frame and components</span>
-            </div>
-            <div class="feature-item">
-                <span class="feature-icon"><i class="fa-solid fa-rotate"></i></span>
-                <span>30-day money-back guarantee</span>
-            </div>
+  
+        <div class="action-buttons">
+          <button class="add-to-cart">Add to Cart</button>
         </div>
+      </div>
     </div>
-  </div>
+
+    <div class="product-scroll-container">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="" alt="Mountain Bike - Trail Blazer">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Trail Blazer Pro</h3>
+          <h3 class="product-price">$1,299.99</h3>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="/api/placeholder/300/300" alt="Road Bike - Speed Demon">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Speed Demon Ultra</h3>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="/api/placeholder/300/300" alt="Urban Commuter">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Urban Commuter Deluxe</h3>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="/api/placeholder/300/300" alt="Kids Bike - Little Explorer">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Little Explorer</h3>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="/api/placeholder/300/300" alt="Mountain Bike Helmet">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Pro MTB Helmet</h3>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="/api/placeholder/300/300" alt="Cycling Gloves">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Grip Master Gloves</h3>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="/api/placeholder/300/300" alt="Bike Lock">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fortress U-Lock</h3>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <footer class="main-footer">
     <div class="footer-container">
