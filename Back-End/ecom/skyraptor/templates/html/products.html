@@ -2,19 +2,21 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skyraptor | Products</title>
-    <link rel="stylesheet" href="{% static 'css/products.css' %}">
-    <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyraptor | Products</title>
+  <link rel="stylesheet" href="{% static 'css/products.css' %}">
+  <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-   <nav class="main-nav">
+  <nav class="main-nav">
     <div class="nav-left">
       <a href="#" class="logo">
         <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
-      </a> 
+      </a>
       <ul class="main-menu">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li class="has-megamenu">
@@ -79,36 +81,46 @@
       <div class="search-box">
         <input type="text" placeholder="SEARCH">
         <button type="submit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
         </button>
       </div>
       <div class="dropdown">
         <button class="dropbtn"><i class="fa-regular fa-user"></i></button>
         <div class="dropdown-content">
-        {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
           <a href="#">Logout</a>
-        {% else %}
+          {% else %}
           <a href="{% url 'login' %}">Login</a>
-        {% endif %}
+          {% endif %}
           <a href="#">Your Account</a>
         </div>
-      </div>  
-      <a href="#">
+      </div>
+      <a href="{% url 'cart_summary' %}">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
     </div>
   </nav>
 
-   <header class="product-header">
+  <header class="product-header">
     <div class="product-count"></div>
     <div class="product-controls">
       <button class="filter-button">
         FILTER
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
       </button>
       <button class="sort-button">
         SORT BY
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
       </button>
     </div>
   </header>
@@ -161,18 +173,19 @@
         <h3>STAY UP TO DATE</h3>
         <ul class="social-icons">
           <li><a href="https://x.com" target="_blank" aria-label="X">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a></li>
+              <i class="fa-brands fa-x-twitter"></i>
+            </a></li>
           <li><a href="https://instagram.com" target="_blank" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a></li>
+              <i class="fa-brands fa-instagram"></i>
+            </a></li>
           <li><a href="https://facebook.com" target="_blank" aria-label="Facebook">
-            <i class="fa-brands fa-facebook"></i>
-          </a></li>
+              <i class="fa-brands fa-facebook"></i>
+            </a></li>
         </ul>
       </div>
     </div>
   </footer>
 
 </body>
+
 </html>
