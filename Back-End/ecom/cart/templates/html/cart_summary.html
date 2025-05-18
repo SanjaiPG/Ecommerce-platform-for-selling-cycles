@@ -116,17 +116,20 @@
 
     <div class="cart-container">
         <div class="cart-items">
+
+            {% for product in cart_products %}
+
             <div class="cart-item">
                 <div class="item-image">
-                    <img src="/api/placeholder/120/120" alt="Wireless Headphones">
+                    <img src="{{ product.image.url }}" alt="Product">
                 </div>
                 <div class="item-details">
                     <div class="item-info">
                         <div>
-                            <h3 class="item-name">Wireless Noise-Cancelling Headphones</h3>
-                            <p class="item-category">Electronics • Black</p>
+                            <h3 class="item-name">{{ product.name }}</h3>
+                            <p class="item-category">{{ product.category }}</p>
                         </div>
-                        <div class="item-price">$199.99</div>
+                        <div class="item-price">{{ product.price }}</div>
                     </div>
                     <div class="item-actions">
                         <div class="quantity-selector">
@@ -141,55 +144,8 @@
                 </div>
             </div>
 
-            <div class="cart-item">
-                <div class="item-image">
-                    <img src="/api/placeholder/120/120" alt="Smart Watch">
-                </div>
-                <div class="item-details">
-                    <div class="item-info">
-                        <div>
-                            <h3 class="item-name">Smart Watch Series 5</h3>
-                            <p class="item-category">Wearables • Silver</p>
-                        </div>
-                        <div class="item-price">$249.99</div>
-                    </div>
-                    <div class="item-actions">
-                        <div class="quantity-selector">
-                            <button class="quantity-btn">-</button>
-                            <input type="text" class="quantity-input" value="1">
-                            <button class="quantity-btn">+</button>
-                        </div>
-                        <div class="item-actions-right">
-                            <button class="remove-item">Remove</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
 
-            <div class="cart-item">
-                <div class="item-image">
-                    <img src="/api/placeholder/120/120" alt="Laptop Sleeve">
-                </div>
-                <div class="item-details">
-                    <div class="item-info">
-                        <div>
-                            <h3 class="item-name">Premium Laptop Sleeve</h3>
-                            <p class="item-category">Accessories • Navy Blue</p>
-                        </div>
-                        <div class="item-price">$34.99</div>
-                    </div>
-                    <div class="item-actions">
-                        <div class="quantity-selector">
-                            <button class="quantity-btn">-</button>
-                            <input type="text" class="quantity-input" value="2">
-                            <button class="quantity-btn">+</button>
-                        </div>
-                        <div class="item-actions-right">
-                            <button class="remove-item">Remove</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="cart-summary">

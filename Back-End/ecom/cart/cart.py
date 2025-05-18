@@ -1,3 +1,5 @@
+from skyraptor.models import Product
+
 class Cart():
     def __init__(self, request):
         self.session = request.session
@@ -16,3 +18,8 @@ class Cart():
             self.cart[product_id] = {'price': str(product.price)}
 
         self.session.modified = True
+
+    def get_prods(self):
+        product_id = self.cart.keys()
+        products = Product.objects.filter(id__in=product_id)
+        return products
