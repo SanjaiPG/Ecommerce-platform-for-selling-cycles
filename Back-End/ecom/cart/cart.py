@@ -19,6 +19,9 @@ class Cart():
 
         self.session.modified = True
 
+    def __len__(self):
+        return len(self.cart)
+    
     def get_prods(self):
         product_id = self.cart.keys()
         products = Product.objects.filter(id__in=product_id)

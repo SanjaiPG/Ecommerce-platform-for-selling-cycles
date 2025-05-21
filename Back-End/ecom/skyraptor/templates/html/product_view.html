@@ -229,7 +229,8 @@
           action: 'post'
         },
         success: function (json) {
-          console.log(json);
+          //console.log(json);
+          document.getElementById('qty').textContent = json.qty
         },
 
         error: function (xhr, errmsg, err) {
