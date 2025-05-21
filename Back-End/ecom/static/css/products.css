@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -202,6 +203,7 @@ body {
 .nav-right a {
   color: #ccc;
   margin-left: 18px;
+  position: relative;
   transition: color 0.3s;
 }
 
@@ -211,6 +213,23 @@ body {
 
 .nav-right svg {
   display: block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff9900;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-container {
@@ -249,9 +268,8 @@ body {
   border-radius: 4px;
   border-top: 3px solid #ffcc00;
   padding: 0;
-  margin: 0; 
+  margin: 0;
 }
-
 
 .dropdown-content a {
   color: #333;
@@ -378,7 +396,8 @@ body {
   gap: 20px;
 }
 
-.filter-button, .sort-button {
+.filter-button,
+.sort-button {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -393,7 +412,8 @@ body {
   transition: background-color 0.2s;
 }
 
-.filter-button:hover, .sort-button:hover {
+.filter-button:hover,
+.sort-button:hover {
   background-color: #f0f0f0;
 }
 
@@ -438,7 +458,8 @@ body {
 .product-info {
   margin-top: auto;
   position: relative;
-  height: 20px; /* Set a fixed height for the container */
+  height: 20px;
+  /* Set a fixed height for the container */
   overflow: hidden;
 }
 

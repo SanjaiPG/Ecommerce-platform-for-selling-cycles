@@ -110,6 +110,7 @@
             </a>
             <a href="{% url 'cart_summary' %}">
                 <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count" id="cart_quantity">{{ cart|length }}</span>
             </a>
         </div>
     </nav>

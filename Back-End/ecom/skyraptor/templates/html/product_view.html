@@ -34,10 +34,10 @@
               <div class="mega-menu-column">
                 <h4>Cycles</h4>
                 <ul>
-                  <li><a href="#">Kids Cycle</a></li>
-                  <li><a href="#">Geared Cycle</a></li>
-                  <li><a href="#">Non Geared Cycle</a></li>
-                  <li><a href="#">Electric Cycle</a></li>
+                  <li><a href="{% url 'category' 'Kids' %}">Kids Cycle</a></li>
+                  <li><a href="{% url 'category' 'Gear' %}">Geared Cycle</a></li>
+                  <li><a href="{% url 'category' 'Non-Gear' %}">Non Geared Cycle</a></li>
+                  <li><a href="{% url 'category' 'Electric' %}">Electric Cycle</a></li>
                 </ul>
               </div>
               <div class="mega-menu-column">
@@ -110,6 +110,7 @@
       </a>
       <a href="{% url 'cart_summary' %}">
         <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="cart_quantity">{{ cart|length }}</span>
       </a>
     </div>
   </nav>
