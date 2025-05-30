@@ -135,7 +135,7 @@
                     <div class="item-actions">
                         <div class="quantity-selector">
                             <button class="quantity-btn">-</button>
-                            <input type="text" class="quantity-input" value="1">
+                            <input type="text" class="quantity-input" value="1" readonly>
                             <button class="quantity-btn">+</button>
                         </div>
                         <div class="item-actions-right">
@@ -219,6 +219,22 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.quantity-btn').click(function () {
+                const input = $(this).siblings('.quantity-input');
+                let currentQty = parseInt(input.val());
+
+                if ($(this).text() === '+' && currentQty < 5) {
+                    input.val(currentQty + 1);
+                } else if ($(this).text() === '-' && currentQty > 1) {
+                    input.val(currentQty - 1);
+                }
+            });
+        });
+    </script>
 
 </body>
 
