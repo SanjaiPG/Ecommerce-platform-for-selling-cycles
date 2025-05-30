@@ -107,7 +107,6 @@
           <a href="#">Your Account</a>
         </div>
       </div>
-      </a>
       <a href="{% url 'cart_summary' %}">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-count" id="cart_quantity">{{ cart|length }}</span>
@@ -223,6 +222,7 @@
         url: '{% url "cart_add" %}',
         data: {
           product_id: $('#add-to-cart').val(),
+          product_qty: $('#qty-cart').val(),
           csrfmiddlewaretoken: '{{ csrf_token }}',
           action: 'post'
         },
