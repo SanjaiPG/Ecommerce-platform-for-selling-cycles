@@ -203,21 +203,18 @@
 
   <script>
 
-    // const quantityInput = document.querySelector('.quantity-input');
-    // const minusBtn = document.querySelectorAll('.quantity-btn')[0];
-    // const plusBtn = document.querySelectorAll('.quantity-btn')[1];
+    $(document).ready(function () {
+      $('.quantity-btn').click(function () {
+        const input = $(this).siblings('.quantity-input');
+        let currentQty = parseInt(input.val());
 
-    // minusBtn.addEventListener('click', function () {
-    //   let value = parseInt(quantityInput.value);
-    //   if (value > 1) {
-    //     quantityInput.value = value - 1;
-    //   }
-    // });
-
-    // plusBtn.addEventListener('click', function () {
-    //   let value = parseInt(quantityInput.value);
-    //   quantityInput.value = value + 1;
-    // });
+        if ($(this).text() === '+' && currentQty < 5) {
+          input.val(currentQty + 1);
+        } else if ($(this).text() === '-' && currentQty > 1) {
+          input.val(currentQty - 1);
+        }
+      });
+    });
 
     $(document).on('click', '#add-to-cart', function (e) {
       e.preventDefault();
