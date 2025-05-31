@@ -135,7 +135,11 @@
                     <div class="item-actions">
                         <div class="quantity-selector">
                             <button class="quantity-btn">-</button>
-                            <input type="text" class="quantity-input" value="1" readonly id="qty-cart">
+                            {% for key, value in quantities.items %}
+                            {% if key == product.id|slugify %}
+                            <input type="text" class="quantity-input" value="{{ value }}" readonly id="qty-cart">
+                            {% endif %}
+                            {% endfor %}
                             <button class="quantity-btn">+</button>
                         </div>
                         <div class="item-actions-right">
