@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .cart import Cart
 from skyraptor.models import Product
+from django.contrib import messages
 from django.http import JsonResponse
 
 # Create your views here.
@@ -26,6 +27,7 @@ def cart_add(request):
 
         # response = JsonResponse({'Product Name: ': product.name})
         response = JsonResponse({'qty': cart_quantity})
+        messages.success(request, 'Product added to cart successfully!')
         return response
 
 def cart_remove(request):
@@ -36,6 +38,7 @@ def cart_remove(request):
         cart.remove(product = Product_id)
 
         response = JsonResponse({'product': Product_id})
+        messages.success(request, 'Product removed from cart successfully!')
         return response
 
 def cart_update(request):
@@ -47,4 +50,5 @@ def cart_update(request):
         cart.update(product=Product_id, quantity=Product_qty)
 
         response = JsonResponse({'qty': Product_qty})
+        messages.success(request, 'Cart updated successfully!')
         return response
