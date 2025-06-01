@@ -142,9 +142,10 @@
                             {% endfor %}
                             <button class="quantity-btn">+</button>
                         </div>
-                        <button class="update-btn" type="button" data-index="{{ product.id }}">Update</button>
+
                         <div class="item-actions-right">
-                            <button class="remove-item">Remove</button>
+                            <button class="update-btn" type="button" data-index="{{ product.id }}">Update</button>
+                            <button class="remove-item" type="button" data-index="{{ product.id }}">Remove</button>
                         </div>
                     </div>
                 </div>
@@ -256,6 +257,29 @@
                 success: function (json) {
                     //console.log(json);
                     // document.getElementById('cart_quantity').textContent = json.qty
+                    location.reload();
+                },
+
+                error: function (xhr, errmsg, err) {
+                    console.log(errmsg);
+                }
+
+            });
+        })
+
+
+        $(document).on('click', '.remove-item', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '{% url "cart_remove" %}',
+                data: {
+                    product_id: $(this).data('index'),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function (json) {
                     location.reload();
                 },
 

@@ -28,7 +28,14 @@ def cart_add(request):
         return response
 
 def cart_remove(request):
-    return render(request, 'html/cart_remove.html', {})
+    cart = Cart(request)
+    if request.POST.get('action') == 'post':
+        Product_id = int(request.POST.get('product_id'))
+
+        cart.remove(product = Product_id)
+
+        response = JsonResponse({'product': Product_id})
+        return response
 
 def cart_update(request):
     cart = Cart(request)

@@ -822,7 +822,7 @@ body {
 .remove-item {
     background: none;
     border: none;
-    color: #999999;
+    color: #000000;
     cursor: pointer;
     font-size: 14px;
     transition: color 0.3s;
