@@ -137,11 +137,12 @@
                             <button class="quantity-btn">-</button>
                             {% for key, value in quantities.items %}
                             {% if key == product.id|slugify %}
-                            <input type="text" class="quantity-input" value="{{ value }}" readonly id="qty-cart">
+                            <input type="text" class="quantity-input" value="{{ value }}" id="select{{ product.id }}">
                             {% endif %}
                             {% endfor %}
                             <button class="quantity-btn">+</button>
                         </div>
+                        <button class="update-btn" type="button" data-index="{{ product.id }}">Update</button>
                         <div class="item-actions-right">
                             <button class="remove-item">Remove</button>
                         </div>
@@ -238,6 +239,33 @@
                 }
             });
         });
+
+        $(document).on('click', '.update-btn', function (e) {
+            e.preventDefault();
+
+            var productid = $(this).data('index');
+            $.ajax({
+                type: 'POST',
+                url: '{% url "cart_update" %}',
+                data: {
+                    product_id: $(this).data('index'),
+                    product_qty: $('#select' + productid).val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function (json) {
+                    //console.log(json);
+                    // document.getElementById('cart_quantity').textContent = json.qty
+                    location.reload();
+                },
+
+                error: function (xhr, errmsg, err) {
+                    console.log(errmsg);
+                }
+
+            });
+        })
+
     </script>
 
 </body>
