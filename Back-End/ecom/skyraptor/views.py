@@ -76,3 +76,6 @@ def category(request, foo):
     except:
         messages.success(request, 'That category does not exist')
         return redirect('home')
+    
+def update_user(request):
+    return render(request, 'html/update_user.html', {})
