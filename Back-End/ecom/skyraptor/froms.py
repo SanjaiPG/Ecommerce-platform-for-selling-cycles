@@ -39,18 +39,23 @@ class UpdateUserForm(UserChangeForm):
         label="", 
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'})
     )
-    username = forms.CharField(
+    first_name = forms.CharField(
         label="", 
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'})
+    )
+    last_name = forms.CharField(
+        label="", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})
     )
 
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('first_name', 'last_name', 'email')
 
     def __init__(self, *args, **kwargs):
         super(UpdateUserForm, self).__init__(*args, **kwargs)
         
         # Removing the help texts
-        self.fields['username'].help_text = None
+        self.fields['first_name'].help_text = None
+        self.fields['last_name'].help_text = None
         self.fields['email'].help_text = None

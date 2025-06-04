@@ -142,26 +142,28 @@
             </button>
         </div>
 
-        <!-- <form method="POST" action="{% url 'update_user' %}">
+        <form method="POST" action="{% url 'update_user' %}">
             {% csrf_token %}
-            {{ user_form.as_p }}c
             <div id="personal" class="tab-content active">
                 <div class="form-section">
                     <h3>Personal Information</h3>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
-                            <input type="text" name="username" id="firstName" value="John">
+                            {{ user_form.first_name.label_tag }}
+                            {{ user_form.first_name }}
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" value="Doe">
+                            {{ user_form.last_name.label_tag }}
+                            {{ user_form.last_name }}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" value="john.doe@email.com">
+                            {{ user_form.email.label_tag }}
+                            {{ user_form.email }}
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
@@ -187,22 +189,7 @@
                 <button class="btn-primary" type="submit">Save Changes</button>
                 <button class="btn-secondary">Cancel</button>
             </div>
-        </form> -->
-
-        <form method="POST" action="{% url 'update_user' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ user_form.username.label_tag }}
-                {{ user_form.username }}
-            </div>
-            <div class="form-group">
-                {{ user_form.email.label_tag }}
-                {{ user_form.email }}
-            </div>
-            <button type="submit" class="btn-primary">Save Changes</button>
         </form>
-
-
     </div>
 
     <footer class="main-footer">
