@@ -142,48 +142,67 @@
             </button>
         </div>
 
-        <div id="personal" class="tab-content active">
-            <div class="form-section">
-                <h3>Personal Information</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" value="John">
+        <!-- <form method="POST" action="{% url 'update_user' %}">
+            {% csrf_token %}
+            {{ user_form.as_p }}c
+            <div id="personal" class="tab-content active">
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" name="username" id="firstName" value="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" value="Doe">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" value="Doe">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="john.doe@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" value="+91 98765 43210">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input type="date" id="dateOfBirth" value="1990-05-15">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" value="john.doe@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" value="+91 98765 43210">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="dateOfBirth">Date of Birth</label>
-                        <input type="date" id="dateOfBirth" value="1990-05-15">
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <select id="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                            <option value="prefer-not-to-say">Prefer not to say</option>
-                        </select>
-                    </div>
-                </div>
+                <button class="btn-primary" type="submit">Save Changes</button>
+                <button class="btn-secondary">Cancel</button>
             </div>
-            <button class="btn-primary">Save Changes</button>
-            <button class="btn-secondary">Cancel</button>
-        </div>
+        </form> -->
+
+        <form method="POST" action="{% url 'update_user' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ user_form.username.label_tag }}
+                {{ user_form.username }}
+            </div>
+            <div class="form-group">
+                {{ user_form.email.label_tag }}
+                {{ user_form.email }}
+            </div>
+            <button type="submit" class="btn-primary">Save Changes</button>
+        </form>
+
+
     </div>
 
     <footer class="main-footer">
