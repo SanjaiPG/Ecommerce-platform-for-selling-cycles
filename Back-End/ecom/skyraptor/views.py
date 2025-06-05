@@ -92,3 +92,6 @@ def update_user(request):
     else:
         messages.success(request, 'You need to be logged in to update your profile')
         return redirect('home')
+    
+def update_password(request):
+    return render(request, 'html/update_password.html', {})
