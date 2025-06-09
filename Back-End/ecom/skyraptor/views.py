@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .froms import SignUpForm, UpdateUserForm
+from .froms import SignUpForm, UpdateUserForm, UpdatePasswordForm
 
 
 def home(request):
@@ -94,4 +94,14 @@ def update_user(request):
         return redirect('home')
     
 def update_password(request):
-    return render(request, 'html/update_password.html', {})
+    if request.user.is_authenticated:
+        current_user = request.user
+        if request.method == 'POST':
+            pass
+        else:
+            form = UpdatePasswordForm(user=current_user)
+            return render(request, 'html/update_password.html', {'form': form})
+
+    else:
+        messages.success(request, 'You need to be logged in to update your password')
+        return redirect('home')
