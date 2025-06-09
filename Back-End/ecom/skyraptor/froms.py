@@ -61,6 +61,15 @@ class UpdateUserForm(UserChangeForm):
         self.fields['email'].help_text = None
 
 class UpdatePasswordForm(SetPasswordForm):
-    class meta:
+    new_password1 = forms.CharField(
+        label="", 
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'New Password'})
+    )
+    new_password2 = forms.CharField(
+        label="", 
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm Password'})
+    )
+
+    class Meta:
         model = User
         fields = ('new_password1', 'new_password2')

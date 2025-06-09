@@ -843,3 +843,13 @@ body {
 .main-footer .social-icons li a i {
     font-size: 40px;
 }
+
+input.error {
+    border: 2px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
