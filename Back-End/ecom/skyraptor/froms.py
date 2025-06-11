@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, SetPasswordForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(
@@ -41,11 +42,11 @@ class UpdateUserForm(UserChangeForm):
     )
     first_name = forms.CharField(
         label="", 
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}), required=False
     )
     last_name = forms.CharField(
         label="", 
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}), required=False
     )
 
     class Meta:
@@ -73,3 +74,29 @@ class UpdatePasswordForm(SetPasswordForm):
     class Meta:
         model = User
         fields = ('new_password1', 'new_password2')
+    
+class UserInfoForm(forms.ModelForm):
+    phone = forms.CharField(
+        label="", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'})
+    )
+    Address = forms.CharField(
+        label="", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'})
+    )
+    city = forms.CharField(
+        label="", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'})
+    )
+    state = forms.CharField(
+        label="", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'State'})
+    )
+    pin_code = forms.CharField(
+        label="", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Pin Code'})
+    )
+
+    class Meta:
+        model = Profile
+        fields = ('phone', 'Address', 'city', 'state', 'pin_code')

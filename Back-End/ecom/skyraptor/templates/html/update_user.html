@@ -132,7 +132,7 @@
 
         <div class="profile-tabs">
             <button class="tab-button active" data-url="{% url 'update_user' %}">
-                <i class="fa-solid fa-user"></i> Personal Info
+                <i class="fa-solid fa-user"></i> Update Profile
             </button>
             <button class="tab-button" data-url="{% url 'update_password' %}">
                 <i class="fa-solid fa-lock"></i> Change Password
@@ -140,7 +140,7 @@
             <button class="tab-button" data-url="#orders">
                 <i class="fa-solid fa-box"></i> My Orders
             </button>
-            <button class="tab-button" data-url="#addresses">
+            <button class="tab-button" data-url="{% url 'update_info' %}">
                 <i class="fa-solid fa-location-dot"></i> Addresses
             </button>
         </div>
@@ -169,23 +169,6 @@
                             {{ user_form.email }}
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" value="+91 98765 43210">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="dateOfBirth">Date of Birth</label>
-                            <input type="date" id="dateOfBirth" value="1990-05-15">
-                        </div>
-                        <div class="form-group">
-                            <label for="gender">Gender</label>
-                            <select id="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                                <option value="prefer-not-to-say">Prefer not to say</option>
-                            </select>
                         </div>
                     </div>
                 </div>
