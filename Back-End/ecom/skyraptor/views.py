@@ -129,3 +129,6 @@ def update_info(request):
     else:
         messages.success(request, 'You need to be logged in to update your profile')
         return redirect('home')
+
+def search(request):
+    return render(request, 'html/home.html', {})
