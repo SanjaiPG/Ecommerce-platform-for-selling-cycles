@@ -80,12 +80,15 @@
       </ul>
     </div>
     <div class="nav-right">
-      <div class="search-box">
-        <input type="text" placeholder="SEARCH">
-        <button type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
+      <form method="get" action="{% url 'products' %}">
+        <div class="search-box">
+          {% csrf_token %}
+          <input type="text" name="q" placeholder="SEARCH" value="{{ request.GET.q }}">
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
       <div class="dropdown">
         <button class="dropbtn"><i class="fa-regular fa-user"></i></button>
         <div class="dropdown-content">

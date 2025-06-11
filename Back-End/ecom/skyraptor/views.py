@@ -129,6 +129,13 @@ def update_info(request):
     else:
         messages.success(request, 'You need to be logged in to update your profile')
         return redirect('home')
-
-def search(request):
-    return render(request, 'html/home.html', {})
+    
+def products(request):
+    query = request.GET.get('q', '')
+    
+    if query:
+        products = Product.objects.filter(name__icontains=query)
+    else:
+        products = Product.objects.all()
+    
+    return render(request, 'html/products.html', {'products': products, 'query': query})
