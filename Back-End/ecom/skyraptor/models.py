@@ -6,11 +6,11 @@ from django.db.models.signals import post_save
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     date_modified = models.DateTimeField(user, auto_now=True)
-    phone = models.CharField(max_length=13, blank=True)
-    Address = models.CharField(max_length=200, blank=True)
-    city = models.CharField(max_length=50, blank=True)
-    state = models.CharField(max_length=50, blank=True)
-    pin_code = models.CharField(max_length=6, blank=True)
+    phone = models.CharField(max_length=13, blank=True, null=True)
+    Address = models.CharField(max_length=200, blank=True, null=True)
+    city = models.CharField(max_length=50, blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True, null=True)
+    pin_code = models.CharField(max_length=6, blank=True, null=True)
     old_cart = models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):

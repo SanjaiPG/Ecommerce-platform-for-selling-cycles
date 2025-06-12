@@ -145,10 +145,11 @@
         </div>
 
         <form method="POST" action="{% url 'update_info' %}">
-            {% csrf_token %}
             <div id="personal" class="tab-content active">
+
+                {% csrf_token %}
                 <div class="form-section">
-                    <h3>Personal Information</h3>
+                    <h3>Billing Information</h3>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
@@ -186,9 +187,62 @@
                         </div>
                     </div>
                 </div>
+
+                <br>
+
+                <div class="form-section">
+                    <h3>Shipping Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="shipping_name">Full Name</label>
+                            {{ shipping_form.shipping_name }}
+                        </div>
+                        <div class="form-group"></div>
+                        <div class="form-group"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="shipping_email">Email</label>
+                            {{ shipping_form.shipping_email.label_tag }}
+                            {{ shipping_form.shipping_email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping_phone">Phone Number</label>
+                            {{ shipping_form.shipping_phone.label_tag }}
+                            {{ shipping_form.shipping_phone }}
+                        </div>
+                        <div class="form-group"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="shipping_address">Address</label>
+                            {{ shipping_form.shipping_address.label_tag }}
+                            {{ shipping_form.shipping_address }}
+                        </div>
+                        <div class="form-group"></div>
+                        <div class="form-group"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="shipping_city">City</label>
+                            {{ shipping_form.shipping_city.label_tag }}
+                            {{ shipping_form.shipping_city }}
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping_state">State</label>
+                            {{ shipping_form.shipping_state.label_tag }}
+                            {{ shipping_form.shipping_state }}
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping_pincode">Pincode</label>
+                            {{ shipping_form.shipping_pin_code.label_tag }}
+                            {{ shipping_form.shipping_pin_code }}
+                        </div>
+                    </div>
+                </div>
                 <button class="btn-primary" type="submit">Save Changes</button>
-                <button class="btn-secondary">Cancel</button>
             </div>
+
         </form>
     </div>
 
