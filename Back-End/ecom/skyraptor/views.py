@@ -134,7 +134,11 @@ def update_password(request):
 def update_info(request):
     if request.user.is_authenticated:
         current_user = Profile.objects.get(user__id=request.user.id)
-        shipping_user = ShippingAddress.objects.get(id=request.user.id)
+        
+        # Safely get or create shipping address
+        shipping_user = ShippingAddress.objects.filter(user=request.user).first()
+        if not shipping_user:
+            shipping_user = ShippingAddress.objects.create(user=request.user)
 
         info_form = UserInfoForm(request.POST or None, instance=current_user)
         shipping_form = ShippingAddressForm(request.POST or None, instance=shipping_user)
@@ -144,7 +148,11 @@ def update_info(request):
             shipping_form.save()
             messages.success(request, 'Your Info has been updated successfully')
             return redirect('home')
-        return render(request, 'html/update_info.html', {'info_form': info_form, 'shipping_form': shipping_form})
+        
+        return render(request, 'html/update_info.html', {
+            'info_form': info_form,
+            'shipping_form': shipping_form
+        })
     
     else:
         messages.success(request, 'You need to be logged in to update your profile')
