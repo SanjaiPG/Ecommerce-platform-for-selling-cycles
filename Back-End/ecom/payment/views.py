@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from cart.cart import Cart
 from payment.forms import ShippingAddressForm
 from payment.models import ShippingAddress
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -20,3 +22,6 @@ def checkout(request):
         shipping_user = ShippingAddress.objects.get(id=request.user.id)
         shipping_form = ShippingAddressForm(request.POST or None, instance=shipping_user)
         return render(request, 'payment/checkout.html', {"cart_products": cart_products, "quantities": quantities, "total": total, "shipping_form": shipping_form})
+    else:
+        messages.success(request, 'You need to be logged in to checkout')
+        return redirect('home')
