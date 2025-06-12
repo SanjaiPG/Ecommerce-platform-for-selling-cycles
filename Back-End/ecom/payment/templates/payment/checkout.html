@@ -122,21 +122,24 @@
             <div class="form-row" style="margin-top: 10px;">
 
                 <div class="form-group" style="flex: 2;">
+                    {% for product in cart_products %}
                     <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
-                        <strong>Skyraptor Geared Cycle</strong>
-                        <p style="margin: 5px 0; color: #777;">Qty: 1 | ₹14,500</p>
+                        <strong>{{ product.name }}</strong>
+                        <p style="margin: 5px 0; color: #777;">Qty: {% for key, value in quantities.items %}
+                            {% if key == product.id|slugify %}{{ value }}{% endif %}{% endfor %} | ₹{{ product.price }}
+                        </p>
                     </div>
-                    <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
-                        <strong>LED Front Light</strong>
-                        <p style="margin: 5px 0; color: #777;">Qty: 2 | ₹500</p>
-                    </div>
-                    <div>
-                        <h4><strong>Total</strong>
-                            <p style="margin: 5px 0; color: #2b2d42;">₹15,200</p>
-                        </h4>
-                    </div>
+                    {% endfor %}
                 </div>
+            </div>
 
+            <div style="margin-top: 30px;">
+                <button class="btn-primary" data-url="{% url 'cart_summary' %}">Update Items</button>
+            </div>
+            <br>
+            <div>
+                <h4><strong>Total - ₹{{ total}}</strong>
+                </h4>
             </div>
 
             <br>
@@ -144,17 +147,18 @@
                 <div class="form-group">
                     <h4 style="margin-bottom: 10px;">Delivery Address</h4>
                     <p>
-                        John Doe<br />
-                        123 Main Street, Sector 22<br />
-                        Bangalore, Karnataka - 560001<br />
-                        Phone: +91 98765 43210
+                        {{ shipping_form.initial.shipping_name }}<br />
+                        {{ shipping_form.initial.shipping_address }}<br />
+                        {{ shipping_form.initial.shipping_city }}, {{ shipping_form.initial.shipping_state }} -
+                        {{ shipping_form.initial.shipping_pin_code }}<br />
+                        Phone: +91 {{ shipping_form.initial.shipping_phone }}
                     </p>
                 </div>
             </div>
 
             <div style="margin-top: 30px;">
                 <button class="btn-primary">Continue to Billing</button>
-                <button class="btn-secondary">Change shipping address</button>
+                <button class="btn-secondary" data-url="{% url 'update_info' %}">Change shipping address</button>
             </div>
         </div>
     </div>
@@ -204,6 +208,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('.btn-primary').click(function () {
+                const url = $(this).data('url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('.btn-secondary').click(function () {
+                const url = $(this).data('url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
 
 </body>
 
