@@ -3,13 +3,13 @@ from cart.cart import Cart
 from payment.forms import ShippingAddressForm
 from payment.models import ShippingAddress
 from django.contrib import messages
+from django.forms.models import model_to_dict
 
 
 
 # Create your views here.
 
 def payment_success(request):
-    
     return render(request, 'payment/payment_success.html', {})
 
 def checkout(request):
@@ -26,6 +26,8 @@ def checkout(request):
         shipping_user = ShippingAddress.objects.get(user=request.user)
         shipping_form = ShippingAddressForm(request.POST or None, instance=shipping_user)
 
+        request.session['my_shipping'] = model_to_dict(shipping_user)
+
         if not shipping_user.shipping_name or not shipping_user.shipping_name.strip():
             messages.success(request, 'Please complete your shipping information before checking out.')
             return redirect('home')
@@ -36,4 +38,12 @@ def checkout(request):
         return redirect('home')
 
 def order_summary(request):
-    return render(request, 'payment/order_summary.html', {})
+    my_shipping = request.session.get('my_shipping')
+    print(my_shipping)
+
+    shipping_address = f"{my_shipping['shipping_address']}\n{my_shipping['shipping_city']}, {my_shipping['shipping_state']} - {my_shipping['shipping_pin_code']}\n"
+    print(shipping_address)
+
+
+    messages.success(request, 'Your order has been placed successfully!')
+    return redirect('home')

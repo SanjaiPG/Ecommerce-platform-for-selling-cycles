@@ -49,7 +49,7 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.IntegerField(max_length=10)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     Category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     image = models.ImageField(upload_to='uploads/product/')
 
@@ -57,12 +57,25 @@ class Product(models.Model):
         return self.name
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    address = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='skyraptor_orders', null=True, blank=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=10)
+    address = models.CharField(max_length=255)
+    amount_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
-        return self.customer
+        return f'Order - {str(self.id)}'
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_items')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='skyraptor_order_items', null=True, blank=True)
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'OrderItem - {str(self.id)}'
+    
+    class Meta:
+        verbose_name_plural = 'Order Items'
