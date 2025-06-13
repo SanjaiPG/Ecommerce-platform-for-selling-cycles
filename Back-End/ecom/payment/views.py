@@ -18,10 +18,22 @@ def checkout(request):
     quantities = cart.get_quants()
     total = cart.get_total()
 
+    if total == 0:
+        messages.success(request, 'Your cart is empty, please add products to your cart before checking out.')
+        return redirect('home')
+
     if request.user.is_authenticated:
         shipping_user = ShippingAddress.objects.get(user=request.user)
         shipping_form = ShippingAddressForm(request.POST or None, instance=shipping_user)
+
+        if not shipping_user.shipping_name or not shipping_user.shipping_name.strip():
+            messages.success(request, 'Please complete your shipping information before checking out.')
+            return redirect('home')
+
         return render(request, 'payment/checkout.html', {"cart_products": cart_products, "quantities": quantities, "total": total, "shipping_form": shipping_form})
     else:
         messages.success(request, 'You need to be logged in to checkout')
         return redirect('home')
+
+def order_summary(request):
+    return render(request, 'payment/order_summary.html', {})
