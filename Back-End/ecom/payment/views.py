@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from cart.cart import Cart
 from payment.forms import ShippingAddressForm
 from payment.models import ShippingAddress, Order, OrderItem
+from skyraptor.models import Product
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.forms.models import model_to_dict
@@ -54,6 +55,18 @@ def order_summary(request):
         user = request.user
         create_order = Order(user=user, full_name=full_name, phone=phone, address=address, amount_paid=amount_paid)
         create_order.save()
+
+        order_id = create_order.pk
+        for product in cart_products:
+            product_id = product.id
+            price = product.price
+            
+            for key, value in quantities.items():
+                if int(key) == product_id:
+                    create_order_item = OrderItem(user=user, order_id=order_id, product_id=product_id, quantity=value, price=price)
+                    create_order_item.save()
+        # cart.clear()
+
 
         messages.success(request, 'Your order has been placed successfully!')
         return redirect('home')
