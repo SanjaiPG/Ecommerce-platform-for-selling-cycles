@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from cart.cart import Cart
 from payment.forms import ShippingAddressForm
 from payment.models import ShippingAddress
+from skyraptor.models import Order
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.forms.models import model_to_dict
 
@@ -39,11 +41,20 @@ def checkout(request):
 
 def order_summary(request):
     my_shipping = request.session.get('my_shipping')
-    print(my_shipping)
+    cart = Cart(request)
+    cart_products = cart.get_prods()
+    quantities = cart.get_quants()
+    total = cart.get_total()
 
-    shipping_address = f"{my_shipping['shipping_address']}\n{my_shipping['shipping_city']}, {my_shipping['shipping_state']} - {my_shipping['shipping_pin_code']}\n"
-    print(shipping_address)
+    full_name = my_shipping['shipping_name']
+    phone = my_shipping['shipping_phone']
+    address = f"{my_shipping['shipping_address']}\n{my_shipping['shipping_city']}, {my_shipping['shipping_state']} - {my_shipping['shipping_pin_code']}\n"
+    amount_paid = total
 
+    if request.user.is_authenticated:
+        user = request.user
+        create_order = Order(user=user, full_name=full_name, phone=phone, address=address, amount_paid=amount_paid)
+        create_order.save()
 
-    messages.success(request, 'Your order has been placed successfully!')
-    return redirect('home')
+        messages.success(request, 'Your order has been placed successfully!')
+        return redirect('home')

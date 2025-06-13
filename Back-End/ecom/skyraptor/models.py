@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_modified = models.DateTimeField(user, auto_now=True)
+    date_modified = models.DateTimeField(auto_now=True)
     phone = models.CharField(max_length=13, blank=True, null=True)
     Address = models.CharField(max_length=200, blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
