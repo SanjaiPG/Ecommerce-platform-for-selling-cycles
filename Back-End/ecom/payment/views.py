@@ -65,8 +65,10 @@ def order_summary(request):
                 if int(key) == product_id:
                     create_order_item = OrderItem(user=user, order_id=order_id, product_id=product_id, quantity=value, price=price)
                     create_order_item.save()
-        # cart.clear()
-
+        
+        for key in list(request.session.keys()):
+            if key == 'session_key':
+                del request.session[key]
 
         messages.success(request, 'Your order has been placed successfully!')
         return redirect('home')
