@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_modified = models.DateTimeField(auto_now=True)
+    date_modified = models.DateTimeField(user, auto_now=True)
     phone = models.CharField(max_length=13, blank=True, null=True)
     Address = models.CharField(max_length=200, blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
@@ -57,25 +57,12 @@ class Product(models.Model):
         return self.name
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='skyraptor_orders', null=True, blank=True)
-    full_name = models.CharField(max_length=255, blank=True, null=True)
-    phone = models.CharField(max_length=10)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
+    quantity = models.IntegerField(default=1)
     address = models.CharField(max_length=255)
-    amount_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    phone = models.CharField(max_length=10)
     date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
-        return f'Order - {str(self.id)}'
-    
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_items')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='skyraptor_order_items', null=True, blank=True)
-    quantity = models.PositiveIntegerField(default=1)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return f'OrderItem - {str(self.id)}'
-    
-    class Meta:
-        verbose_name_plural = 'Order Items'
+        return None

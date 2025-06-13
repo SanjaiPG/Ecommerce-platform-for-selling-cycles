@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from cart.cart import Cart
 from payment.forms import ShippingAddressForm
-from payment.models import ShippingAddress
-from skyraptor.models import Order
+from payment.models import ShippingAddress, Order, OrderItem
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.forms.models import model_to_dict
