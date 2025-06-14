@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from cart.cart import Cart
 from payment.forms import ShippingAddressForm
 from payment.models import ShippingAddress, Order, OrderItem
-from skyraptor.models import Product
+from skyraptor.models import Product, Profile
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.forms.models import model_to_dict
@@ -69,6 +69,10 @@ def order_summary(request):
         for key in list(request.session.keys()):
             if key == 'session_key':
                 del request.session[key]
+
+        current_user = Profile.objects.get(user=request.user)
+        current_user.old_cart = ""
+        current_user.save()
 
         messages.success(request, 'Your order has been placed successfully!')
         return redirect('home')
