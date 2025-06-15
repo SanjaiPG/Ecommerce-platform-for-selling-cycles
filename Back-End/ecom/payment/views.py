@@ -79,4 +79,8 @@ def order_summary(request):
 
 
 def dash(request):
-    return render(request, 'payment/dash.html', {})
+    if request.user.is_authenticated and request.user.is_staff:
+        return render(request, 'payment/dash.html', {})
+    else:
+        messages.success(request, 'You do not have permission to access this page.')
+        return redirect('home')
