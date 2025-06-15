@@ -76,3 +76,7 @@ def order_summary(request):
 
         messages.success(request, 'Your order has been placed successfully!')
         return redirect('home')
+
+
+def dash(request):
+    return render(request, 'payment/dash.html', {})

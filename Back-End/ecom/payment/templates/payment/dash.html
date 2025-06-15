@@ -1,0 +1,174 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyraptor Admin | Shipping Management</title>
+    <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+    <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="admin-nav">
+        <div class="nav-left">
+            <div class="nav-title">Shipping Management</div>
+        </div>
+        <div class="nav-right">
+            <div class="admin-user">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin User</span>
+            </div>
+            <button class="home-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Site
+            </button>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Shipping Management</h1>
+            <p>Manage and track all shipping orders</p>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="card-icon pending">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="card-content">
+                    <h3 id="pendingCount">12</h3>
+                    <p>Shipping Pending</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="card-icon shipped">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="card-content">
+                    <h3 id="shippedCount">25</h3>
+                    <p>Shipped Orders</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="card-icon total">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <div class="card-content">
+                    <h3 id="totalCount">85</h3>
+                    <p>Total Orders</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-bar">
+            <div class="controls-left">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search orders..." id="searchInput">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <select class="filter-select" id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="pending">Shipping Pending</option>
+                    <option value="shipped">Shipped</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="shipping-table">
+            <div class="table-header">
+                <div class="table-title">Shipping Orders</div>
+                <div class="table-stats">Showing <span id="showingCount">10</span> of <span
+                        id="totalTableCount">85</span> orders
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="shippingTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Amount Paid</th>
+                            <th>Phone Number</th>
+                            <th>Date Ordered</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ORD-2025-001</strong></td>
+                            <td>Rahul Kumar</td>
+                            <td>₹ 1,500</td>
+                            <td>9876543210</td>
+                            <td>14/06/2025</td>
+                            <td>
+                                <button class="btn-status" onclick="toggleStatus(this)">Shipping Pending</button>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const statusButtons = document.querySelectorAll(".btn-status");
+
+            // Toggle status button
+            statusButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    if (button.classList.contains("shipped")) {
+                        button.classList.remove("shipped");
+                        button.textContent = "Shipping Pending";
+                        button.style.backgroundColor = "#ffc107";
+                    } else {
+                        button.classList.add("shipped");
+                        button.textContent = "Shipped";
+                        button.style.backgroundColor = "#28a745";
+                    }
+                    filterTable(); // Re-run filter after status change
+                });
+            });
+
+            // Attach event to search input
+            document.getElementById("searchInput").addEventListener("input", filterTable);
+            // Attach event to status filter (if needed)
+            document.getElementById("statusFilter").addEventListener("change", filterTable);
+
+            function filterTable() {
+                const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+                const statusFilter = document.getElementById("statusFilter").value.toLowerCase();
+
+                const table = document.getElementById("shippingTable");
+                const rows = table.getElementsByTagName("tr");
+
+                for (let i = 1; i < rows.length; i++) {
+                    const cells = rows[i].getElementsByTagName("td");
+
+                    if (cells.length === 0) continue; // skip if no cells
+
+                    let rowText = '';
+                    for (let j = 0; j < cells.length; j++) {
+                        rowText += cells[j].textContent.toLowerCase() + ' ';
+                    }
+
+                    const statusText = cells[5].textContent.toLowerCase();
+
+                    const matchesSearch = rowText.includes(searchQuery);
+                    const matchesStatus = statusFilter === "" || statusText.includes(statusFilter);
+
+                    rows[i].style.display = (matchesSearch && matchesStatus) ? "" : "none";
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
