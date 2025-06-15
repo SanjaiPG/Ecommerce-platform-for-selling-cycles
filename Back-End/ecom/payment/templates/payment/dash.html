@@ -101,16 +101,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for item in orders %}
                         <tr>
-                            <td><strong>ORD-2025-001</strong></td>
-                            <td>Rahul Kumar</td>
-                            <td>₹ 1,500</td>
-                            <td>9876543210</td>
-                            <td>14/06/2025</td>
+                            <td><strong>{{ item.id }}</strong></td>
+                            <td>{{ item.full_name }}</td>
+                            <td>{{ item.amount_paid }}</td>
+                            <td>{{ item.phone }}</td>
+                            <td>{{ item.date_ordered }}</td>
                             <td>
                                 <button class="btn-status" onclick="toggleStatus(this)">Shipping Pending</button>
                             </td>
                         </tr>
+                        {% endfor %}
                 </table>
             </div>
         </div>
