@@ -86,3 +86,16 @@ def dash(request):
     else:
         messages.success(request, 'You do not have permission to access this page.')
         return redirect('home')
+    
+def order_view(request, pk):
+    if request.user.is_authenticated and request.user.is_staff:
+
+        orders = Order.objects.get(id=pk)
+        items = OrderItem.objects.filter(order=pk)
+        for item in items:
+            item.total = item.quantity * item.price
+
+        return render(request, 'payment/order_view.html', {'orders': orders, 'items': items})
+    else:
+        messages.success(request, 'You do not have permission to access this page.')
+        return redirect('home')

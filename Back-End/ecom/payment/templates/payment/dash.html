@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skyraptor Admin | Shipping Management</title>
     <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
 </head>
 
@@ -22,7 +23,7 @@
                 <i class="fas fa-user-shield"></i>
                 <span>Admin User</span>
             </div>
-            <button class="home-btn">
+            <button class="home-btn" data-url="{% url 'home' %}">
                 <i class="fas fa-sign-out-alt"></i>
                 Site
             </button>
@@ -103,7 +104,7 @@
                     <tbody>
                         {% for item in orders %}
                         <tr>
-                            <td><strong>{{ item.id }}</strong></td>
+                            <td><a href="{% url 'order_view' item.id %}"><strong>{{ item.id }}</strong></a></td>
                             <td>{{ item.full_name }}</td>
                             <td>{{ item.amount_paid }}</td>
                             <td>{{ item.phone }}</td>
@@ -168,6 +169,15 @@
                     rows[i].style.display = (matchesSearch && matchesStatus) ? "" : "none";
                 }
             }
+        });
+
+        $(document).ready(function () {
+            $('.home-btn').click(function () {
+                const url = $(this).data('url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
         });
     </script>
 

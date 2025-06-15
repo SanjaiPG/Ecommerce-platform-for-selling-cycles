@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8208d75b81.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/order_view.css' %}">
+    <title>Skyraptor Admin | Order Details</title>
+</head>
+
+<body>
+
+    <nav class="admin-nav">
+        <div class="nav-left">
+            <button class="back-btn" data-url="{% url 'dash' %}">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </button>
+            <div class="nav-title">Order Details</div>
+        </div>
+        <div class="nav-right">
+            <div class="admin-user">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin User</span>
+            </div>
+            <button class="home-btn" data-url="{% url 'home' %}">
+                <i class="fas fa-sign-out-alt"></i>
+                Site
+            </button>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-left">
+                <h1>Order #ORD-2025-001</h1>
+                <p>order details</p>
+            </div>
+            <div class="order-status status-pending">
+                Shipping Pending
+            </div>
+        </div>
+
+        <div class="details-grid">
+            <!-- Customer Information -->
+            <div class="details-card">
+                <div class="card-title">
+                    <i class="fas fa-user"></i>
+                    Customer Information
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">{{ orders.full_name}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Phone</span>
+                    <span class="info-value">{{ orders.phone }}</span>
+                </div>
+            </div>
+
+            <div class="details-card">
+                <div class="card-title">
+                    <i class="fas fa-truck"></i>
+                    Shipping Information
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Shipping Address</span>
+                    <span class="info-value">{{ orders.address }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Order Date</span>
+                    <span class="info-value">{{ orders.date_ordered }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Shipping Date</span>
+                    <span class="info-value">{{ orders.date_shipped }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label"><strong>Amount Paid</strong></span>
+                    <span class="info-value"><strong>{{ orders.amount_paid }}</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-items">
+            <div class="items-header">
+                <i class="fas fa-boxes"></i>
+                <span>Order Items</span>
+            </div>
+            <div class="items-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td><strong>{{ item.product }}</strong></td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.back-btn').click(function () {
+                const url = $(this).data('url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('.home-btn').click(function () {
+                const url = $(this).data('url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
