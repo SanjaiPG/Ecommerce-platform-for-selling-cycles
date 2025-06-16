@@ -82,9 +82,29 @@ def dash(request):
     if request.user.is_authenticated and request.user.is_staff:
         orders = Order.objects.all()
 
-        return render(request, 'payment/dash.html', {'orders': orders})
+        shipped_orders_count = orders.filter(shipped=True).count()
+        not_shipped_orders_count = orders.filter(shipped=False).count()
+        total_orders = shipped_orders_count + not_shipped_orders_count
+
+
+        if request.method == "POST":
+            order_id = request.POST.get('order_id')
+            status = request.POST.get('shipping_status') == "true"
+
+            try:
+                order = Order.objects.get(id=order_id)
+                order.shipped = status
+                order.save()
+                messages.success(request, f"Order {order_id} marked as {'shipped' if status else 'not shipped'}.")
+            except Order.DoesNotExist:
+                messages.error(request, "Order not found.")
+
+            return redirect('dash')
+
+        return render(request, 'payment/dash.html', {'orders': orders, 'shipped_orders_count' : shipped_orders_count, 'not_shipped_orders_count': not_shipped_orders_count, 'total_orders': total_orders})
+
     else:
-        messages.success(request, 'You do not have permission to access this page.')
+        messages.error(request, 'You do not have permission to access this page.')
         return redirect('home')
     
 def order_view(request, pk):
@@ -94,7 +114,7 @@ def order_view(request, pk):
         items = OrderItem.objects.filter(order=pk)
         for item in items:
             item.total = item.quantity * item.price
-
+            
         return render(request, 'payment/order_view.html', {'orders': orders, 'items': items})
     else:
         messages.success(request, 'You do not have permission to access this page.')
