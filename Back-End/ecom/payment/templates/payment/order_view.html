@@ -38,12 +38,17 @@
         <!-- Page Header -->
         <div class="page-header">
             <div class="header-left">
-                <h1>Order #ORD-2025-001</h1>
-                <p>order details</p>
+                <h1>Order Details</h1>
             </div>
+            {% if orders.shipped %}
+            <div class="order-status status-shipped">
+                Shipped
+            </div>
+            {% else %}
             <div class="order-status status-pending">
                 Shipping Pending
             </div>
+            {% endif %}
         </div>
 
         <div class="details-grid">
