@@ -177,3 +177,6 @@ def user_order(request):
     else:
         messages.success(request, 'You need to be logged in to view your orders')
         return redirect('home')
+    
+def home_order_views(request):
+    return render(request, 'html/home_order_views.html', {})

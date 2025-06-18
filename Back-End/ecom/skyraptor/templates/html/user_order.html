@@ -127,35 +127,37 @@
         <div class="orders-list">
 
             {% for order in orders %}
-            <div class="order-card">
-                <div class="order-card-header">
-                    <div>
-                        <div class="order-id"></div>
-                        <div class="order-id">Order Placed on {{ order.date_ordered }}</div>
+            <a>
+                <div class="order-card">
+                    <div class="order-card-header">
+                        <div>
+                            <div class="order-id"></div>
+                            <div class="order-id">Order Placed on {{ order.date_ordered }}</div>
+                        </div>
+                        {% if order.shipped %}
+                        <div class="order-status status-shipped">
+                            <i class="fa-solid fa-check-circle"></i> Shipped
+                        </div>
+                        {% else %}
+                        <div class="order-status status-processing">
+                            <i class="fa-solid fa-check-circle"></i> Shipping Pending
+                        </div>
+                        {% endif %}
                     </div>
-                    {% if order.shipped %}
-                    <div class="order-status status-shipped">
-                        <i class="fa-solid fa-check-circle"></i> Shipped
+                    <div class="order-items-preview">
+                        {% for item in order_items %}
+                        {% if item.order.id == order.id %}
+                        <div class="item-preview">
+                            <span>{{ item.product.name }}</span>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
-                    {% else %}
-                    <div class="order-status status-processing">
-                        <i class="fa-solid fa-check-circle"></i> Shipping Pending
+                    <div class="order-summary-row">
+                        <div class="order-total">₹{{ order.amount_paid }}</div>
                     </div>
-                    {% endif %}
                 </div>
-                <div class="order-items-preview">
-                    {% for item in order_items %}
-                    {% if item.order.id == order.id %}
-                    <div class="item-preview">
-                        <span>{{ item.product.name }}</span>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="order-summary-row">
-                    <div class="order-total">₹{{ order.amount_paid }}</div>
-                </div>
-            </div>
+            </a>
             {% endfor %}
 
         </div>
