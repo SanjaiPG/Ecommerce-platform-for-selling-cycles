@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .froms import SignUpForm, UpdateUserForm, UpdatePasswordForm, UserInfoForm
 from payment.forms import ShippingAddressForm
-from payment.models import ShippingAddress
+from payment.models import ShippingAddress, Order, OrderItem
 import json
 from cart.cart import Cart
 
@@ -167,3 +167,13 @@ def products(request):
         products = Product.objects.all()
     
     return render(request, 'html/products.html', {'products': products, 'query': query})
+
+def user_order(request):
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(user=request.user)
+        order_items = OrderItem.objects.filter(order__in=orders)
+        return render(request, 'html/user_order.html', {'orders': orders, 'order_items': order_items})
+
+    else:
+        messages.success(request, 'You need to be logged in to view your orders')
+        return redirect('home')

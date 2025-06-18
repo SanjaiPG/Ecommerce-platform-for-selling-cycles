@@ -12,4 +12,5 @@ urlpatterns = [
     path('update_password/', views.update_password, name='update_password'),
     path('product_view/<int:pk>/', views.product_view, name='product_view'),
     path('category/<str:foo>', views.category, name='category'),
+    path('user_order/', views.user_order, name='user_order'),
 ]
