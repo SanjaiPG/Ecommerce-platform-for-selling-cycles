@@ -127,12 +127,12 @@
         <div class="orders-list">
 
             {% for order in orders %}
-            <div class="order-card-wrapper" data-url="{% url 'home_order_views' %}">
+            <div class="order-card-wrapper" data-url="{% url 'home_order_views' order.id %}">
                 <div class="order-card">
                     <div class="order-card-header">
                         <div>
-                            <div class="order-id"></div>
-                            <div class="order-id">Order Placed on {{ order.date_ordered }}</div>
+                            <div class="order-id">Order ID - {{ order.id }}</div>
+                            <div class="order-date">Order Placed on {{ order.date_ordered }}</div>
                         </div>
                         {% if order.shipped %}
                         <div class="order-status status-shipped">
