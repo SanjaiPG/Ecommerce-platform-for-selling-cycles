@@ -150,8 +150,8 @@
                 {% for order_item in order_items %}
 
                 <div class="order-item">
-                    <div class="item-image">
-                        <i class="fa-solid fa-bicycle"></i>
+                    <div class="item-image" style="width: 160px;">
+                        <img src="{{ order_item.product.image.url }}" style="width: 160px;" alt="Product">
                     </div>
                     <div class="item-details">
                         <div class="item-name">{{ order_item.product.name }}</div>
