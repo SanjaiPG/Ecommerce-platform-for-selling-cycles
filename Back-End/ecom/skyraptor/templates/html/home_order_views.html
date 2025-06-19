@@ -118,21 +118,26 @@
     </nav>
 
 
-
     <div class="order-container">
 
         <div class="order-header">
             <div class="order-header-content">
                 <div class="order-info">
-                    <h1>Order #SKR-2024-001234</h1>
+                    <h1>Order ID - {{ order.id }}</h1>
                     <div class="order-meta">
-                        <span><i class="fa-solid fa-calendar"></i> Placed on March 15, 2024</span>
-                        <span><i class="fa-solid fa-truck"></i> Shipped Date: March 22, 2024</span>
+                        <span><i class="fa-solid fa-calendar"></i> Placed on {{ order.date_ordered }}</span>
+                        <span><i class="fa-solid fa-truck"></i> Shipped Date: {{ order.date_shipped }}</span>
                     </div>
                 </div>
+                {% if order.shipped %}
+                <div class="order-status status-shipped">
+                    <i class="fa-solid fa-check-circle"></i> Shipped
+                </div>
+                {% else %}
                 <div class="order-status status-processing">
                     <i class="fa-solid fa-check-circle"></i> Shipping Pending
                 </div>
+                {% endif %}
             </div>
         </div>
 
@@ -142,34 +147,23 @@
                     <i class="fa-solid fa-box"></i> Items Ordered
                 </h2>
 
+                {% for order_item in order_items %}
+
                 <div class="order-item">
                     <div class="item-image">
                         <i class="fa-solid fa-bicycle"></i>
                     </div>
                     <div class="item-details">
-                        <div class="item-name">Skyraptor Electric Cycle - Model X1</div>
+                        <div class="item-name">{{ order_item.product.name }}</div>
                         <div class="item-price-info">
-                            <span class="quantity">Qty: 1</span>
-                            <span class="item-price">₹45,999</span>
+                            <span class="quantity">Qty: {{ order_item.quantity }}</span>
+                            <span class="item-price">{{ order_item.price }}</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="order-item">
-                    <div class="item-image">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div class="item-details">
-                        <div class="item-name">Premium Safety Kit</div>
-                        <div class="item-specs">
-                            Includes: Helmet, Knee Pads, Elbow Pads, Reflective Vest
-                        </div>
-                        <div class="item-price-info">
-                            <span class="quantity">Qty: 1</span>
-                            <span class="item-price">₹2,499</span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
 
             <!-- Order Summary -->
@@ -178,25 +172,19 @@
                     <i class="fa-solid fa-receipt"></i> Order Summary
                 </h3>
 
+                {% for order_item in order_items %}
                 <div class="summary-row">
-                    <span>Subtotal (3 items)</span>
-                    <span>₹49,797</span>
+                    <span><strong>{{ order_item.product.name }} </strong>
+                        <p> </p> ₹{{ order_item.price }} x
+                        {{order_item.quantity }}
+                    </span>
+                    <span>₹{{ order_item.total }}</span>
                 </div>
-                <div class="summary-row">
-                    <span>Shipping</span>
-                    <span>Free</span>
-                </div>
-                <div class="summary-row">
-                    <span>GST (18%)</span>
-                    <span>₹8,963</span>
-                </div>
-                <div class="summary-row">
-                    <span>Discount</span>
-                    <span>-₹2,500</span>
-                </div>
+                {% endfor %}
+
                 <div class="summary-row">
                     <span>Total Amount</span>
-                    <span>₹56,260</span>
+                    <span>₹{{ order.amount_paid }}</span>
                 </div>
             </div>
         </div>
@@ -211,10 +199,8 @@
                         <i class="fa-solid fa-truck"></i> Delivery Address
                     </div>
                     <div class="address-details">
-                        <strong>John Doe</strong><br>
-                        123 Skyraptor Lane<br>
-                        Bengaluru, Karnataka 560001<br>
-                        Phone: +91 98765 43210
+                        <strong>{{ order.full_name }}</strong><br>
+                        {{ order.address }}
                     </div>
                 </div>
             </div>

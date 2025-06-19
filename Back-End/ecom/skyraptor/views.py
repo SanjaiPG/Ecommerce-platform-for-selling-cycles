@@ -178,5 +178,15 @@ def user_order(request):
         messages.success(request, 'You need to be logged in to view your orders')
         return redirect('home')
     
-def home_order_views(request):
-    return render(request, 'html/home_order_views.html', {})
+def home_order_views(request, pk):
+    if request.user.is_authenticated:
+        order = Order.objects.get(id=pk)
+        order_items = OrderItem.objects.filter(order=order)
+
+        for item in order_items:
+            item.total = item.quantity * item.price
+
+        return render(request, 'html/home_order_views.html', {
+            'order': order,
+            'order_items': order_items
+        })
