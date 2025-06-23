@@ -16,9 +16,15 @@ python -m venv virt
 
 source virt/bin/activate
 
-# Step 3: Install Django
+# For Windows
+
+virt\Scripts\activate.bat 
+
+# Step 3: Install Django and Pillow
 
 pip install Django
+
+pip install Pillow
 
 # Step 4: Start a new Django project
 
@@ -63,5 +69,3 @@ localhost:8000/admin in your local web browser
 
 # To create super user - admin
 python manage.py createsuperuser
-
-23/06/25
