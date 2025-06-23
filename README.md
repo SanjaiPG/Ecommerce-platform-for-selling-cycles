@@ -63,3 +63,5 @@ localhost:8000/admin in your local web browser
 
 # To create super user - admin
 python manage.py createsuperuser
+
+23/06/25
