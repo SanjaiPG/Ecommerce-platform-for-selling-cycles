@@ -9,12 +9,14 @@ from .froms import SignUpForm, UpdateUserForm, UpdatePasswordForm, UserInfoForm
 from payment.forms import ShippingAddressForm
 from payment.models import ShippingAddress, Order, OrderItem
 import json
+import random
 from cart.cart import Cart
 
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'html/home.html', {})
+    products = list(Product.objects.all())
+    random.shuffle(products)
+    return render(request, 'html/home.html', {'products': products[:8]})
 
 def products(request):
     products = Product.objects.all()
