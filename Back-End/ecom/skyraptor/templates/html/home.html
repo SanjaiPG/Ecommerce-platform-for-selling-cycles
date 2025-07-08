@@ -20,6 +20,30 @@
     #hero {
       background-image: url("{% static 'img/hero.png' %}");
     }
+
+    #banner {
+      background-image: url("{% static 'img/banner.png' %}");
+    }
+
+    #sm-banner .banner-box {
+      background-image: url("{% static 'img/banner1.png' %}");
+    }
+
+    #sm-banner .banner-box:nth-child(2) {
+      background-image: url("{% static 'img/banner2.jpg' %}");
+    }
+
+    #banner3 .banner-box {
+      background-image: url("{% static 'img/mini1.png' %}");
+    }
+
+    #banner3 .banner-box:nth-child(2) {
+      background-image: url("{% static 'img/mini2.png' %}");
+    }
+
+    #banner3 .banner-box:nth-child(3) {
+      background-image: url("{% static 'img/banner.png' %}");
+    }
   </style>
 
 </head>
@@ -173,7 +197,7 @@
   <section id="banner" class="section-m1">
     <h4>Repair Services</h4>
     <h2>Crush Every Ride with <span>Top Gear This Week</span> – Discover the Hottest Bikes and Gear</h2>
-    <button class="normal">Explore More</button>
+    <button class="normal" id="Explore">Explore More</button>
   </section>
 
   <br>
@@ -187,78 +211,19 @@
   <br>
 
   <main class="product-grid">
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Mountain Bike - Trail Blazer">
+    {% for product in new %}
+    <a href="{% url 'product_view' product.id %}">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{{ product.image.url }}" alt="Mountain Bike - Trail Blazer">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <h3 class="product-price">{{ product.price }}</h3>
+        </div>
       </div>
-      <div class="product-info">
-        <h3 class="product-name">Trail Blazer Pro</h3>
-        <h3 class="product-price">$1,299.99</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Road Bike - Speed Demon">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Speed Demon Ultra</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Urban Commuter">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Urban Commuter Deluxe</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Kids Bike - Little Explorer">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Little Explorer</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Mountain Bike Helmet">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Pro MTB Helmet</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Cycling Gloves">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Grip Master Gloves</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Bike Lock">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Fortress U-Lock</h3>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image">
-        <img src="/api/placeholder/300/300" alt="Water Bottle">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Hydro Flow Bottle</h3>
-      </div>
-    </div>
+    </a>
+    {% endfor %}
   </main>
 
   <br>
@@ -271,13 +236,13 @@
       <h4>Pedal Power</h4>
       <h2>Pedal into Adventure</h2>
       <span>Top-quality cycles and gear now available</span>
-      <button class="white">Explore Deals</button>
+      <button class="white" id="1">Explore Deals</button>
     </div>
     <div class="banner-box">
       <h4>Ride Awaits</h4>
       <h2>Your Perfect Bike is Waiting</h2>
       <span>Summer. Sunshine. New Rides. Are You Ready?</span>
-      <button class="white">Shop Now</button>
+      <button class="white" id="2">Shop Now</button>
     </div>
   </section>
 
@@ -347,6 +312,18 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('Explore').addEventListener('click', function () {
+      window.location.href = '/products';
+    });
+    document.getElementById('1').addEventListener('click', function () {
+      window.location.href = '/products';
+    });
+    document.getElementById('2').addEventListener('click', function () {
+      window.location.href = '/products';
+    });
+  </script>
 
 </body>
 

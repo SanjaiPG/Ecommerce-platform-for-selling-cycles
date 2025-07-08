@@ -604,30 +604,6 @@ body {
   justify-content: center;
 }
 
-#hero h4 {
-  font-size: 20px;
-  color: #222;
-  padding-bottom: 15px;
-}
-
-#hero h1 {
-  font-size: 50px;
-  line-height: 64px;
-  color: #ff9900;
-}
-
-#hero button {
-  background-image: url(images/button.png);
-  background-color: transparent;
-  color: #2b2d42;
-  border: 0;
-  padding: 14px 80px 14px 65px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
-}
-
 #product1 {
   text-align: center;
 }
@@ -637,7 +613,6 @@ body {
   line-height: 54px;
   color: #222;
 }
-
 
 .product-header {
   display: flex;
@@ -652,27 +627,6 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-}
-
-.filter-button,
-.sort-button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.filter-button:hover,
-.sort-button:hover {
-  background-color: #f0f0f0;
 }
 
 .product-grid {
@@ -763,7 +717,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url(images/banner/banner.png);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -810,7 +763,6 @@ body {
   justify-content: center;
   align-items: flex-start;
   text-align: center;
-  background-image: url(images/banner/banner5.png);
   background-size: cover;
   background-position: center;
   min-width: 870px;
@@ -837,30 +789,17 @@ body {
   padding-bottom: 15px;
 }
 
-#sm-banner .banner-box:nth-child(2) {
-  background-image: url(images/banner/b4.jpg);
-}
-
 #banner3 .banner-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: center;
-  background-image: url(images/hero4.png);
   background-size: cover;
   background-position: center;
   min-width: 30%;
   height: 30vh;
   padding: 30px;
   margin-bottom: 20px;
-}
-
-#banner3 .banner-box:nth-child(2) {
-  background-image: url(images/c.png);
-}
-
-#banner3 .banner-box:nth-child(3) {
-  background-image: url(images/banner/banner.png);
 }
 
 #banner3 {

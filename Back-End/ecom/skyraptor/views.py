@@ -14,9 +14,10 @@ from cart.cart import Cart
 
 
 def home(request):
+    new = Product.objects.order_by('-id')[:8]
     products = list(Product.objects.all())
     random.shuffle(products)
-    return render(request, 'html/home.html', {'products': products[:8]})
+    return render(request, 'html/home.html', {'products': products[:8], 'new': new})
 
 def products(request):
     products = Product.objects.all()
