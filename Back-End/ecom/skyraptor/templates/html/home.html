@@ -44,6 +44,22 @@
     #banner3 .banner-box:nth-child(3) {
       background-image: url("{% static 'img/banner.png' %}");
     }
+
+    @media (max-width: 768px) {
+
+      #hero {
+        background-image: url("{% static 'img/mobhero.png' %}");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+
+      #sm-banner,
+      #banner3 {
+        display: none;
+      }
+    }
   </style>
 
 </head>
@@ -340,15 +356,7 @@
       });
 
       // Toggle mega menus on click for mobile
-      megaMenuParents.forEach(parent => {
-        parent.addEventListener('click', e => {
-          if (window.innerWidth <= 992) {
-            // prevent following link if parent has a link
-            e.preventDefault();
-            parent.classList.toggle('open');
-          }
-        });
-      });
+
     });
   </script>
 

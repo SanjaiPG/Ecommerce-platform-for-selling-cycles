@@ -1149,3 +1149,113 @@ body {
     padding: 10px 0;
   }
 }
+
+
+@media only screen and (max-width: 576px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    /* Show 1 product per row */
+  }
+
+  #hero {
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  .section-p1 h2 {
+    font-size: 28px;
+  }
+
+  .section-p1 p {
+    font-size: 16px;
+  }
+
+  .banner-box {
+    padding: 15px;
+  }
+
+  .footer-container {
+    display: block;
+  }
+
+  .footer-links {
+    margin-bottom: 20px;
+  }
+}
+
+/* For Tablets (576px to 768px) */
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* Show 2 products per row */
+  }
+
+  .product-card {
+    padding: 15px;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-links {
+    margin-bottom: 15px;
+  }
+}
+
+/* For Laptops and Desktops (768px and above) */
+@media only screen and (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    /* Show 4 products per row */
+  }
+
+  .banner-box {
+    padding: 30px;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-links {
+    margin-bottom: 0;
+  }
+}
+
+/* Additional Styling for Mega Menu on Larger Screens */
+@media only screen and (min-width: 992px) {
+  .main-menu {
+    display: flex;
+  }
+
+  .has-megamenu {
+    position: relative;
+  }
+
+  .mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .has-megamenu:hover .mega-menu {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+
+  #sm-banner {
+    display: flex;
+  }
+
+  #banner3 {
+    display: flex;
+  }
+}
