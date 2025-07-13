@@ -19,6 +19,11 @@
       <a href="#" class="logo">
         <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
       </a>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="main-menu">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li class="has-megamenu">
@@ -188,6 +193,44 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Safe check for buttons before adding listeners
+      const explore = document.getElementById('Explore');
+      const btn1 = document.getElementById('1');
+      const btn2 = document.getElementById('2');
+
+      if (explore) {
+        explore.addEventListener('click', function () {
+          window.location.href = '/products';
+        });
+      }
+
+      if (btn1) {
+        btn1.addEventListener('click', function () {
+          window.location.href = '/products';
+        });
+      }
+
+      if (btn2) {
+        btn2.addEventListener('click', function () {
+          window.location.href = '/products';
+        });
+      }
+
+      // Hamburger logic
+      const hamburger = document.querySelector('.hamburger');
+      const mainMenu = document.querySelector('.main-menu');
+
+      if (hamburger && mainMenu) {
+        hamburger.addEventListener('click', () => {
+          mainMenu.classList.toggle('active');
+          hamburger.classList.toggle('active');
+        });
+      }
+    });
+  </script>
 
 </body>
 
