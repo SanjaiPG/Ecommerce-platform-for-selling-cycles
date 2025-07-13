@@ -1205,7 +1205,7 @@ body {
 }
 
 /* For Laptops and Desktops (768px and above) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
     /* Show 4 products per row */
