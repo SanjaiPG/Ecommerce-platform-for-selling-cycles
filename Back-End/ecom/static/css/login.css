@@ -257,3 +257,65 @@ body {
     font-size: 12px;
     margin-top: 5px;
 }
+
+@media (max-width: 480px) {
+    .container {
+        height: auto !important;
+        /* Allow container to expand */
+        min-height: auto !important;
+        overflow: visible !important;
+        /* Make sure nothing is clipped */
+        padding-top: 30px !important;
+        /* Add some spacing at the top */
+    }
+
+    .form-container {
+        position: relative !important;
+        width: 100% !important;
+        left: 0 !important;
+        top: auto !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+        transform: none !important;
+        height: auto !important;
+        margin-bottom: 30px;
+    }
+
+    .sign-in,
+    .sign-up {
+        opacity: 1 !important;
+        z-index: 10 !important;
+        position: relative !important;
+        width: 100% !important;
+        transform: none !important;
+    }
+
+    .container.active .sign-in,
+    .container.active .sign-up {
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+    }
+
+    .toggle-container {
+        display: none !important;
+    }
+
+    .container form {
+        padding: 20px;
+    }
+
+    .container input {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .container button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
