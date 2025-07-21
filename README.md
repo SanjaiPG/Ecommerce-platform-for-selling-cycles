@@ -1,5 +1,4 @@
-# E-commerce Platform for Selling Cycles
-This is the web page for my summer internship project — an e-commerce platform for selling cycles.
+# Skyraptor
 
 🐧 Environment
 
