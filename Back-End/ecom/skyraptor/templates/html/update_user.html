@@ -128,7 +128,7 @@
                 </div>
                 <div>
                     <h1>{{ user.username }}</h1>
-                    <p style="margin: 5px 0; opacity: 0.8;">Member since March 2023</p>
+                    <!-- <p style="margin: 5px 0; opacity: 0.8;">Member since March 2023</p> -->
                     <p style="margin: 0; opacity: 0.8;">{{ user.email }}</p>
                 </div>
             </div>
@@ -136,16 +136,16 @@
 
         <div class="profile-tabs">
             <button class="tab-button active" data-url="{% url 'update_user' %}">
-                <i class="fa-solid fa-user"></i> Update Profile
+                <i class="fa-solid fa-user"></i> <span>Update Profile</span>
             </button>
             <button class="tab-button" data-url="{% url 'update_password' %}">
-                <i class="fa-solid fa-lock"></i> Change Password
+                <i class="fa-solid fa-lock"></i> <span>Change Password</span>
             </button>
             <button class="tab-button" data-url="{% url 'user_order' %}">
-                <i class="fa-solid fa-box"></i> My Orders
+                <i class="fa-solid fa-box-open"></i> <span>My Orders</span>
             </button>
             <button class="tab-button" data-url="{% url 'update_info' %}">
-                <i class="fa-solid fa-location-dot"></i> Addresses
+                <i class="fa-solid fa-location-dot"></i> <span>Addresses</span>
             </button>
         </div>
 
@@ -177,7 +177,6 @@
                     </div>
                 </div>
                 <button class="btn-primary" type="submit">Save Changes</button>
-                <button class="btn-secondary">Cancel</button>
             </div>
         </form>
     </div>
