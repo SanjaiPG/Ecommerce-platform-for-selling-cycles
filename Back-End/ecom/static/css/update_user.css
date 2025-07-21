@@ -853,3 +853,246 @@ input.error {
     font-size: 12px;
     margin-top: 5px;
 }
+
+@media (max-width: 1200px) {
+    .main-nav {
+        padding: 0 40px;
+    }
+
+    .mega-menu {
+        min-width: 700px;
+        padding: 10px 0;
+    }
+
+    .mega-menu-container {
+        padding: 0 10px;
+    }
+
+    .footer-container {
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .main-footer {
+        padding: 30px 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-nav {
+        flex-wrap: wrap;
+        padding: 0 20px;
+    }
+
+    .nav-left {
+        flex-basis: 100%;
+        justify-content: space-between;
+    }
+
+    .logo {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .main-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .main-menu li {
+        margin: 0 10px 10px 10px;
+    }
+
+    .mega-menu {
+        min-width: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    .mega-menu-container {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .mega-menu-column {
+        min-width: 140px;
+        flex: 1 1 45%;
+    }
+
+    .nav-right {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 15px;
+    }
+
+    .search-box input[type="text"] {
+        width: 120px;
+    }
+
+    .main-footer {
+        padding: 30px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-links {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-nav {
+        padding: 0 15px;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-menu li {
+        margin: 5px 0;
+    }
+
+    .mega-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        min-width: auto;
+        padding: 10px 0;
+    }
+
+    .mega-menu-container {
+        flex-direction: column;
+    }
+
+    .mega-menu-column {
+        min-width: 100%;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    .nav-right {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .search-box input[type="text"] {
+        width: 100%;
+    }
+
+    .main-footer {
+        padding: 20px 15px;
+        font-size: 13px;
+    }
+
+    .footer-links {
+        min-width: 100%;
+    }
+
+    .main-footer .social-icons li a i {
+        font-size: 30px;
+    }
+}
+
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+    z-index: 1100;
+    /* above menu */
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s linear;
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 992px) {
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide the main menu by default */
+    .main-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #2b2d42;
+        position: absolute;
+        top: 60px;
+        /* adjust based on nav height */
+        left: 0;
+        padding: 10px 0;
+        border-radius: 0 0 4px 4px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* When menu is active */
+    .main-menu.active {
+        display: flex;
+    }
+
+    .main-menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Adjust mega menu to be simple dropdown under its parent */
+    .mega-menu {
+        position: static;
+        box-shadow: none;
+        min-width: 100%;
+        border-top: none;
+        padding: 10px 0;
+        display: none;
+        /* hide by default */
+        background: #3b4359;
+        border-radius: 0 0 4px 4px;
+    }
+
+    /* Show mega menu when its parent has .open class */
+    .has-megamenu.open .mega-menu {
+        display: block;
+    }
+
+    /* Remove hover to avoid conflict */
+    .has-megamenu:hover .mega-menu {
+        display: none;
+    }
+
+    /* Make mega menu columns stack */
+    .mega-menu-container {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    .mega-menu-column {
+        min-width: 100%;
+        padding: 10px 0;
+    }
+}
+
