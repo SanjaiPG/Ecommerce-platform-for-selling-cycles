@@ -25,6 +25,11 @@
             <a href="#" class="logo">
                 <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
             </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="main-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="has-megamenu">
@@ -157,7 +162,7 @@
                         <div class="item-name">{{ order_item.product.name }}</div>
                         <div class="item-price-info">
                             <span class="quantity">Qty: {{ order_item.quantity }}</span>
-                            <span class="item-price">{{ order_item.price }}</span>
+                            <span class="item-price">₹{{ order_item.price }}</span>
                         </div>
                     </div>
                 </div>
