@@ -25,65 +25,71 @@
             <a href="#" class="logo">
                 <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
             </a>
-            <ul class="main-menu">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="has-megamenu">
-                    <a href="{% url 'products' %}">Products</a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-container">
-                            <div class="mega-menu-column">
-                                <h4>Cycles</h4>
-                                <ul>
-                                    <li><a href="{% url 'category' 'Kids' %}">Kids Cycle</a></li>
-                                    <li><a href="{% url 'category' 'Gear' %}">Geared Cycle</a></li>
-                                    <li><a href="{% url 'category' 'Non-Gear' %}">Non Geared Cycle</a></li>
-                                    <li><a href="{% url 'category' 'Electric' %}">Electric Cycle</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Accessories</h4>
-                                <ul>
-                                    <li><a href="#">Locks & Safety</a></li>
-                                    <li><a href="#">Saddle Covers</a></li>
-                                    <li><a href="#">Mud Guards</a></li>
-                                    <li><a href="#">Lights</a></li>
-                                    <li><a href="#">Bags & Bottles</a></li>
-                                </ul>
-                            </div>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <ul class="main-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="has-megamenu">
+                <a href="{% url 'products' %}">Products</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-container">
+                        <div class="mega-menu-column">
+                            <h4>Cycles</h4>
+                            <ul>
+                                <li><a href="{% url 'category' 'Kids' %}">Kids Cycle</a></li>
+                                <li><a href="{% url 'category' 'Gear' %}">Geared Cycle</a></li>
+                                <li><a href="{% url 'category' 'Non-Gear' %}">Non Geared Cycle</a></li>
+                                <li><a href="{% url 'category' 'Electric' %}">Electric Cycle</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Accessories</h4>
+                            <ul>
+                                <li><a href="#">Locks & Safety</a></li>
+                                <li><a href="#">Saddle Covers</a></li>
+                                <li><a href="#">Mud Guards</a></li>
+                                <li><a href="#">Lights</a></li>
+                                <li><a href="#">Bags & Bottles</a></li>
+                            </ul>
                         </div>
                     </div>
-                </li>
-                <li class="has-megamenu">
-                    <a href="#">Services</a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-container">
-                            <div class="mega-menu-column">
-                                <h4>Skyraptor Technology</h4>
-                                <ul>
-                                    <li><a href="#">New Drivetrain Technology</a></li>
-                                    <li><a href="#">Our Innovation</a></li>
-                                    <li><a href="#">Traditional Cycle vs Skyraptor Cycle</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Contact us</h4>
-                                <ul>
-                                    <li><a href="#">Email us</a></li>
-                                    <li><a href="#">Call us</a></li>
-                                    <li><a href="#">Chat with us</a></li>
-                                    <li><a href="#">Visit us</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Franchise Enquiry</h4>
-                                <ul>
-                                    <li><a href="#">Enquiry Form</a></li>
-                                </ul>
-                            </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="#">Services</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-container">
+                        <div class="mega-menu-column">
+                            <h4>Skyraptor Technology</h4>
+                            <ul>
+                                <li><a href="#">New Drivetrain Technology</a></li>
+                                <li><a href="#">Our Innovation</a></li>
+                                <li><a href="#">Traditional Cycle vs Skyraptor Cycle</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Contact us</h4>
+                            <ul>
+                                <li><a href="#">Email us</a></li>
+                                <li><a href="#">Call us</a></li>
+                                <li><a href="#">Chat with us</a></li>
+                                <li><a href="#">Visit us</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Franchise Enquiry</h4>
+                            <ul>
+                                <li><a href="#">Enquiry Form</a></li>
+                            </ul>
                         </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </li>
+        </ul>
         </div>
         <div class="nav-right">
             <form method="get" action="{% url 'products' %}">
@@ -120,7 +126,7 @@
     <div class="orders-container">
 
         <div class="orders-header">
-            <h1><i class="fa-solid fa-box"></i> My Orders</h1>
+            <h1><i class="fa-solid fa-box-open"></i> My Orders</h1>
             <p style="margin: 10px 0 0 0; opacity: 0.9;">Track and manage all your orders in one place</p>
         </div>
 
