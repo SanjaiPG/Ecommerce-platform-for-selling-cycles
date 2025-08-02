@@ -203,7 +203,7 @@
         </div>
         <div class="product-info">
           <h3 class="product-name">{{ product.name }}</h3>
-          <h3 class="product-price">{{ product.price }}</h3>
+          <h3 class="product-price">₹{{ product.price }}</h3>
         </div>
       </div>
     </a>
@@ -240,7 +240,7 @@
         </div>
         <div class="product-info">
           <h3 class="product-name">{{ product.name }}</h3>
-          <h3 class="product-price">{{ product.price }}</h3>
+          <h3 class="product-price">₹{{ product.price }}</h3>
         </div>
       </div>
     </a>
@@ -352,11 +352,8 @@
 
       hamburger.addEventListener('click', () => {
         mainMenu.classList.toggle('active');
-        hamburger.classList.toggle('active'); // For animating hamburger if you want
+        hamburger.classList.toggle('active');
       });
-
-      // Toggle mega menus on click for mobile
-
     });
   </script>
 
