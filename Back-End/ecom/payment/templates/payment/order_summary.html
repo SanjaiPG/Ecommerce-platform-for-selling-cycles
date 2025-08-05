@@ -25,6 +25,11 @@
             <a href="#" class="logo">
                 <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
             </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="main-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="has-megamenu">
@@ -104,6 +109,9 @@
                     <a href="{% url 'login' %}">Login</a>
                     {% endif %}
                     <a href="{% url 'update_user' %}">Your Account</a>
+                    {% if user.is_staff %}
+                    <a href="{% url 'dash' %}">Admin</a>
+                    {% endif %}
                 </div>
             </div>
             </a>

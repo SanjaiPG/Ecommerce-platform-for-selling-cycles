@@ -25,6 +25,11 @@
             <a href="#" class="logo">
                 <img src="{% static 'img/logo.png' %}" alt="Logo" style="height: 50px; width: 65px">
             </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="main-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="has-megamenu">
@@ -86,16 +91,15 @@
             </ul>
         </div>
         <div class="nav-right">
-            <div class="search-box">
-                <input type="text" placeholder="SEARCH">
-                <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-            </div>
+            <form method="get" action="{% url 'products' %}">
+                <div class="search-box">
+                    {% csrf_token %}
+                    <input type="text" name="q" placeholder="SEARCH" value="{{ request.GET.q }}">
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
             <div class="dropdown">
                 <button class="dropbtn"><i class="fa-regular fa-user"></i></button>
                 <div class="dropdown-content">
@@ -104,7 +108,10 @@
                     {% else %}
                     <a href="{% url 'login' %}">Login</a>
                     {% endif %}
-                    <a href="#">Your Account</a>
+                    <a href="{% url 'update_user' %}">Your Account</a>
+                    {% if user.is_staff %}
+                    <a href="{% url 'dash' %}">Admin</a>
+                    {% endif %}
                 </div>
             </div>
             </a>
